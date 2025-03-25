@@ -1,0 +1,22 @@
+---
+import DesktopMenu from './DesktopMenu.svelte';
+import MobileMenu from './MobileMenu.svelte';
+---
+
+<nav class="navbar bg-base-100">
+  <div class="navbar-start">
+    <DesktopMenu client:load />
+  </div>
+  <div class="navbar-center">
+    <a href="/" class="btn btn-ghost normal-case text-xl">
+      <img src="/logo.svg" alt="社民黨" class="h-8" />
+    </a>
+  </div>
+  <div class="navbar-end">
+    <a href="/join" class="btn btn-primary">加入我們</a>
+    <a href="/donate" class="btn btn-secondary ml-2">捐款支持</a>
+  </div>
+  <div class="lg:hidden">
+    <MobileMenu client:load />
+  </div>
+</nav>
