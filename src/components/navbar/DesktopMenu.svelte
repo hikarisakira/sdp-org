@@ -4,23 +4,23 @@
 </script>
 
 <ul class="menu menu-horizontal px-1">
-  <li class="dropdown dropdown-hover">
-    <button class="btn btn-ghost text-xl">最新消息</button>
-    <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+  <div class="dropdown dropdown-hover">
+    <div tabindex="0" role="button" class="btn btn-ghost m-1 text-xl">最新消息▼</div>
+    <ul class="dropdown-content z-[1] menu p-2 shadow-sm bg-base-100 rounded-box w-52">
       <li><a href="/news/press">新聞稿</a></li>
       <li><a href="/news/events">活動資訊</a></li>
       <li><a href="/news/issues">議題發言</a></li>
       <li><a href="/news/clarification">闢謠專區</a></li>
     </ul>
-  </li>
-  <li class="dropdown dropdown-hover">
-    <button class="btn btn-ghost text-xl">關於社民黨</button>
-    <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+  </div>
+  <div class="dropdown dropdown-hover">
+    <div tabindex="0" role="button" class="btn btn-ghost m-1 text-xl">關於社民黨▼</div>
+    <ul class="dropdown-content z-[1] menu p-2 shadow-sm bg-base-100 rounded-box w-52">
       <li><a href="/about">簡介</a></li>
       <li><a href="/about/team">組織團隊</a></li>
       <li><a href="/about/officials">黨公職</a></li>
       <li><a href="/about/documents">黨務文件</a></li>
       <li><a href="/about/finance">財報公開專區</a></li>
     </ul>
-  </li>
+  </div>
 </ul>

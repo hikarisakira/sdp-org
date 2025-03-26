@@ -1,22 +1,29 @@
 ---
-import DesktopMenu from './DesktopMenu.svelte';
-import MobileMenu from './MobileMenu.svelte';
+import DesktopMenu from './navbar/DesktopMenu.svelte';
+import MobileMenu from './navbar/MobileMenu.svelte';
 ---
 
 <nav class="navbar bg-base-100">
-  <div class="navbar-start">
+  <!-- 桌面版左側 -->
+  <div class="navbar-start hidden md:flex">
     <DesktopMenu client:load />
   </div>
+
+  <!-- Logo居中 -->
   <div class="navbar-center">
-    <a href="/" class="btn btn-ghost normal-case text-xl">
+    <a href="/" class="normal-case text-xl">
       <img src="/logo.svg" alt="社會民主黨" class="h-12 lg:h-16" />
     </a>
   </div>
-  <div class="navbar-end">
+
+  <!-- 桌面版右側 -->
+  <div class="navbar-end hidden md:flex">
     <a href="/join" class="btn btn-primary">加入我們</a>
     <a href="/donate" class="btn btn-secondary ml-2">捐款支持</a>
   </div>
-  <div class="lg:hidden">
+
+  <!-- 手機版選單按鈕 -->
+  <div class="navbar-end md:hidden">
     <MobileMenu client:load />
   </div>
 </nav>

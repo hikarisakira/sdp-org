@@ -18,6 +18,7 @@
     "@types/react-dom": "^19.0.3",
     "astro": "^5.5.4",
     "daisyui": "^5.0.9",
+    "feather-icons": "^4.29.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "svelte": "^5.19.9",
@@ -25,7 +26,8 @@
     "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16"
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/feather-icons": "^4.29.4"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
