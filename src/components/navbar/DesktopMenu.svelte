@@ -1,3 +1,5 @@
+<svelte:options runes={true} />
+
 <script>
   let isNewsOpen = false;
   let isAboutOpen = false;
