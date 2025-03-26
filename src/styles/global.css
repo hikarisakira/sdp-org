@@ -1,3 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @plugin "@tailwindcss/typography";
+
+#footer-color {
+    background-color: #eb5078;
+}

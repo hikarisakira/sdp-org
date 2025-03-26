@@ -16,12 +16,12 @@
   }
 </script>
 
-<button class="btn btn-square btn-ghost" on:click={toggleMenu}>
+<button class="btn btn-square btn-ghost" on:click={toggleMenu} aria-label="Toggle menu">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
 </button>
 
 {#if isMenuOpen}
-  <div class="fixed inset-0 bg-black bg-opacity-50 z-40" on:click={toggleMenu}></div>
+  <button type="button" class="fixed inset-0 bg-black bg-opacity-50 z-40" on:click={toggleMenu} aria-label="Close menu"></button>
   <div class="fixed inset-y-0 left-0 w-64 bg-base-100 z-50" transition:slide={{ duration: 300 }}>
     <ul class="menu p-4 w-full">
       {#if !currentSubmenu}
