@@ -1,29 +1,29 @@
 import { g as createComponent, h as createAstro, i as renderTemplate, m as maybeRenderHead, j as addAttribute, k as renderComponent, l as renderHead, n as renderSlot } from '../chunks/astro/server_DO-K2bh7.mjs';
 /* empty css                                 */
-import { p as push, a as pop } from '../chunks/_@astro-renderers_Cv9TCZCj.mjs';
-export { r as renderers } from '../chunks/_@astro-renderers_Cv9TCZCj.mjs';
+import { p as push, a as pop } from '../chunks/_@astro-renderers_Dywvm6Jk.mjs';
+export { r as renderers } from '../chunks/_@astro-renderers_Dywvm6Jk.mjs';
 import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 
-const astroLogo = new Proxy({"src":"/_astro/astro.Dm8K3lV8.svg","width":115,"height":48,"format":"svg"}, {
+const astroLogo = new Proxy({"src":"/_astro/astro.CXuftnGC.svg","width":115,"height":48,"format":"svg"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
 							}
 							if (name === 'fsPath') {
-								return "D:/GitHub/sdp-org/src/assets/astro.svg";
+								return "D:/Documents/GitHub/sdp-org/src/assets/astro.svg";
 							}
 							
 							return target[name];
 						}
 					});
 
-const background = new Proxy({"src":"/_astro/background.BPKAcmfN.svg","width":1440,"height":1024,"format":"svg"}, {
+const background = new Proxy({"src":"/_astro/background.Mahwsfbs.svg","width":1440,"height":1024,"format":"svg"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
 							}
 							if (name === 'fsPath') {
-								return "D:/GitHub/sdp-org/src/assets/background.svg";
+								return "D:/Documents/GitHub/sdp-org/src/assets/background.svg";
 							}
 							
 							return target[name];
@@ -40,7 +40,7 @@ To get started, open the <code data-astro-cid-mmc7otgs><pre data-astro-cid-mmc7o
 From content layers to server islands, click to learn more about the new features and
 			improvements in Astro 5.0
 </p> </a> </div> `;
-}, "D:/GitHub/sdp-org/src/components/Welcome.astro", void 0);
+}, "D:/Documents/GitHub/sdp-org/src/components/Welcome.astro", void 0);
 
 function DesktopMenu($$payload) {
 
@@ -50,7 +50,7 @@ function DesktopMenu($$payload) {
 function MobileMenu($$payload, $$props) {
 	push();
 
-	$$payload.out += `<button class="btn btn-square btn-ghost" aria-label="Toggle menu"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button> `;
+	$$payload.out += `<button class="btn btn-square btn-ghost" aria-label="Toggle menu"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button> `;
 
 	{
 		$$payload.out += '<!--[!-->';
@@ -61,8 +61,57 @@ function MobileMenu($$payload, $$props) {
 }
 
 const $$Navbar = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${maybeRenderHead()}<nav class="navbar bg-base-100"> <!-- 手機版選單按鈕（左側） --> <div class="navbar-start md:hidden"> ${renderComponent($$result, "MobileMenu", MobileMenu, { "client:visible": true, "client:component-hydration": "visible", "client:component-path": "D:/GitHub/sdp-org/src/components/navbar/MobileMenu.svelte", "client:component-export": "default" })} </div> <!-- 桌面版左側 --> <div class="navbar-start hidden md:flex"> ${renderComponent($$result, "DesktopMenu", DesktopMenu, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/GitHub/sdp-org/src/components/navbar/DesktopMenu.svelte", "client:component-export": "default" })} </div> <!-- Logo居中 --> <div class="navbar-center relative"> <a href="/" class="normal-case text-xl logo-container"> <img src="/logo.svg" alt="社會民主黨" class="h-12 lg:h-16 primary-logo"> <img src="/logo-font.svg" alt="社會民主黨" class="h-12 md:h-16 logo secondary-logo absolute"> </a> </div> <!-- 桌面版右側 --> <div class="navbar-end hidden md:flex"> <a href="/join" class="btn btn-primary">加入我們</a> <a href="/donate" class="btn btn-secondary ml-2">捐款支持</a> </div> </nav>`;
-}, "D:/GitHub/sdp-org/src/components/Navbar.astro", void 0);
+  return renderTemplate`${maybeRenderHead()}<nav class="navbar bg-base-100"> <!-- 手機版選單按鈕（左側） --> <div class="navbar-start md:hidden"> ${renderComponent($$result, "MobileMenu", MobileMenu, { "client:visible": true, "client:component-hydration": "visible", "client:component-path": "D:/Documents/GitHub/sdp-org/src/components/navbar/MobileMenu.svelte", "client:component-export": "default" })} </div> <!-- 桌面版左側 --> <div class="navbar-start hidden md:flex"> ${renderComponent($$result, "DesktopMenu", DesktopMenu, { "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Documents/GitHub/sdp-org/src/components/navbar/DesktopMenu.svelte", "client:component-export": "default" })} </div> <!-- Logo居中 --> <div class="navbar-center relative"> <a href="/" class="normal-case text-xl logo-container"> <img src="/logo.svg" alt="社會民主黨" class="h-12 lg:h-16 primary-logo"> <img src="/logo-font.svg" alt="社會民主黨" class="h-12 md:h-16 logo secondary-logo absolute"> </a> </div> <!-- 桌面版右側 --> <div class="navbar-end hidden md:flex"> <a href="/join" class="btn btn-primary">加入我們</a> <a href="/donate" class="btn btn-secondary ml-2">捐款支持</a> </div> </nav>`;
+}, "D:/Documents/GitHub/sdp-org/src/components/Navbar.astro", void 0);
+
+function LogoZone() {
+  return /* @__PURE__ */ jsxs("aside", { className: "items-center sm:flex", children: [
+    /* @__PURE__ */ jsx("div", { className: "flex items-center mb-4", children: /* @__PURE__ */ jsx("img", { loading: "lazy", src: "/footer-logo.min.svg", alt: "社會民主黨", className: "h-32" }) }),
+    /* @__PURE__ */ jsxs("div", { className: "flex flex-col  mb-4", children: [
+      /* @__PURE__ */ jsx("span", { className: "footer-title", children: "支持社民 一同前進" }),
+      /* @__PURE__ */ jsxs("p", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", strokeWidth: "1.5", className: "w-5 h-5", children: [
+          /* @__PURE__ */ jsx("path", { d: "M15.3 2c.42 0 .76.34.76.75v.17c.75.19 1.3.87 1.3 1.67a.75.75 0 0 1-1.5 0q-.02-.2-.23-.22h-.4a.48.48 0 0 0-.16.93l1 .38a1.98 1.98 0 0 1-.01 3.72v.23a.75.75 0 0 1-1.5 0v-.17a1.7 1.7 0 0 1-1.3-1.67.75.75 0 0 1 1.5 0q.02.21.22.23h.4a.48.48 0 0 0 .17-.94l-1-.37a1.98 1.98 0 0 1 0-3.72v-.24c0-.41.34-.75.76-.75", fill: "#FFF" }),
+          /* @__PURE__ */ jsx("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M19.43 11.08a1.58 1.58 0 0 1 2.22 2.22l-3.86 4.82a2 2 0 0 1-1.55.75h-6.17a1 1 0 0 0-.5.2l-.53.47c.1.32-.03.7-.34.87L6.12 21.9a.75.75 0 0 1-1.02-.27l-3-5.2a.75.75 0 0 1 .28-1.02l2.57-1.5a.8.8 0 0 1 .75 0l1.69-1.35a3.3 3.3 0 0 1 2.02-.75c.82 0 2.1.07 3.27.5h2.6c.65 0 1.23.35 1.54.89zM8.56 17.95l-.27.24-1.75-3.03 1.78-1.43q.54-.41 1.1-.42c.77 0 1.88.07 2.8.43q.18.06.37.06h2.68a.29.29 0 0 1 .23.47l-.07.06-.03.02-.13.03h-2.73a.75.75 0 0 0 0 1.5h2.73c.49 0 .93-.2 1.25-.5l3.85-3.13a.08.08 0 0 1 .11.1l-3.87 4.84a.5.5 0 0 1-.37.18h-6.17c-.56 0-1.1.2-1.51.58m-4.79-1.62 2.25 3.9 1.28-.74-2.25-3.9z", fill: "#FFF" })
+        ] }),
+        /* @__PURE__ */ jsx("a", { href: "/donate", className: "link link-hover", children: "捐款支持社民黨" })
+      ] }),
+      /* @__PURE__ */ jsx("br", {}),
+      /* @__PURE__ */ jsxs("p", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 32 32", strokeWidth: "1.5", className: "w-5 h-5", children: [
+          /* @__PURE__ */ jsx("path", { d: "M21 16h2v2h-2zM9 16h8v2H9zm12-4h2v2h-2zM9 12h8v2H9zm0-4h14v2H9z", fill: "#FFF" }),
+          /* @__PURE__ */ jsx("path", { d: "M25 2H7a2 2 0 0 0-2 2v25a1 1 0 0 0 1 1h1a1 1 0 0 0 .8-.4l2.2-3 2.2 3a1 1 0 0 0 1.6 0l2.2-3 2.2 3a1 1 0 0 0 1.6 0l2.2-3 2.2 3a1 1 0 0 0 .8.4h1a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2m0 25.3-2.2-2.9a1 1 0 0 0-1.6 0l-2.2 3-2.2-3a1 1 0 0 0-1.6 0l-2.2 3-2.2-3a1 1 0 0 0-1.6 0l-2.2 3V4h18Z", fill: "#FFF" }),
+          /* @__PURE__ */ jsx("path", { "data-name": "<Transparent Rectangle>", fill: "none", d: "M0 0h32v32H0z" })
+        ] }),
+        "愛心碼：0329"
+      ] })
+    ] })
+  ] });
+}
+
+function FooterNavigation() {
+  return /* @__PURE__ */ jsxs(Fragment, { children: [
+    /* @__PURE__ */ jsxs("nav", { children: [
+      /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h6", { className: "footer-title", children: "最新消息" }) }),
+      /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-2 text-white", children: [
+        /* @__PURE__ */ jsx("a", { href: "/news/press", className: "link link-hover", children: "新聞稿" }),
+        /* @__PURE__ */ jsx("a", { href: "/news/events", className: "link link-hover", children: "活動資訊" }),
+        /* @__PURE__ */ jsx("a", { href: "/news/issues", className: "link link-hover", children: "議題發言" }),
+        /* @__PURE__ */ jsx("a", { href: "/news/clarification", className: "link link-hover", children: "闢謠專區" })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs("nav", { children: [
+      /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h6", { className: "footer-title", children: "關於社民黨" }) }),
+      /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-2 text-white", children: [
+        /* @__PURE__ */ jsx("a", { href: "/about", className: "link link-hover", children: "簡介" }),
+        /* @__PURE__ */ jsx("a", { href: "/about/team", className: "link link-hover", children: "組織團隊" }),
+        /* @__PURE__ */ jsx("a", { href: "/about/officials", className: "link link-hover", children: "黨公職" }),
+        /* @__PURE__ */ jsx("a", { href: "/about/documents", className: "link link-hover", children: "黨務文件" }),
+        /* @__PURE__ */ jsx("a", { href: "/about/finance", className: "link link-hover", children: "財報公開專區" })
+      ] })
+    ] })
+  ] });
+}
 
 function FacebookIcon() {
   return /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 24 25", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
@@ -101,29 +150,28 @@ function LineIcon() {
   ] });
 }
 
-function LogoZone() {
-  return /* @__PURE__ */ jsxs("aside", { className: "items-center sm:flex", children: [
-    /* @__PURE__ */ jsx("div", { className: "flex items-center mb-4", children: /* @__PURE__ */ jsx("img", { loading: "lazy", src: "/footer-logo.min.svg", alt: "社會民主黨", className: "h-32" }) }),
-    /* @__PURE__ */ jsxs("div", { className: "flex flex-col  mb-4", children: [
-      /* @__PURE__ */ jsx("span", { className: "footer-title", children: "支持社民 一同前進" }),
+function ContactButton() {
+  return /* @__PURE__ */ jsx(Fragment, { children: /* @__PURE__ */ jsxs("div", { className: "footer-end", children: [
+    /* @__PURE__ */ jsxs("div", { children: [
+      /* @__PURE__ */ jsx("span", { className: "footer-title", children: "聯絡我們" }),
       /* @__PURE__ */ jsxs("p", { className: "flex items-center gap-2", children: [
-        /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", "stroke-width": "1.5", className: "w-5 h-5", children: [
-          /* @__PURE__ */ jsx("path", { d: "M15.3 2c.42 0 .76.34.76.75v.17c.75.19 1.3.87 1.3 1.67a.75.75 0 0 1-1.5 0q-.02-.2-.23-.22h-.4a.48.48 0 0 0-.16.93l1 .38a1.98 1.98 0 0 1-.01 3.72v.23a.75.75 0 0 1-1.5 0v-.17a1.7 1.7 0 0 1-1.3-1.67.75.75 0 0 1 1.5 0q.02.21.22.23h.4a.48.48 0 0 0 .17-.94l-1-.37a1.98 1.98 0 0 1 0-3.72v-.24c0-.41.34-.75.76-.75", fill: "#FFF" }),
-          /* @__PURE__ */ jsx("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M19.43 11.08a1.58 1.58 0 0 1 2.22 2.22l-3.86 4.82a2 2 0 0 1-1.55.75h-6.17a1 1 0 0 0-.5.2l-.53.47c.1.32-.03.7-.34.87L6.12 21.9a.75.75 0 0 1-1.02-.27l-3-5.2a.75.75 0 0 1 .28-1.02l2.57-1.5a.8.8 0 0 1 .75 0l1.69-1.35a3.3 3.3 0 0 1 2.02-.75c.82 0 2.1.07 3.27.5h2.6c.65 0 1.23.35 1.54.89zM8.56 17.95l-.27.24-1.75-3.03 1.78-1.43q.54-.41 1.1-.42c.77 0 1.88.07 2.8.43q.18.06.37.06h2.68a.29.29 0 0 1 .23.47l-.07.06-.03.02-.13.03h-2.73a.75.75 0 0 0 0 1.5h2.73c.49 0 .93-.2 1.25-.5l3.85-3.13a.08.08 0 0 1 .11.1l-3.87 4.84a.5.5 0 0 1-.37.18h-6.17c-.56 0-1.1.2-1.51.58m-4.79-1.62 2.25 3.9 1.28-.74-2.25-3.9z", fill: "#FFF" })
-        ] }),
-        /* @__PURE__ */ jsx("a", { href: "/donate", className: "link link-hover", children: "捐款支持社民黨" })
+        /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: "1.5", stroke: "currentColor", className: "w-5 h-5", children: /* @__PURE__ */ jsx("path", { d: "M21.51 5.77a2.25 2.25 0 0 0-2.88-2.88l-14 5.1a2.25 2.25 0 0 0-.07 4.2l5.17 2.07q.3.12.41.42l2.07 5.16a2.25 2.25 0 0 0 4.2-.07z", fill: "#fff" }) }),
+        "台北市中山區林森北路100號8樓之4"
       ] }),
-      /* @__PURE__ */ jsx("br", {}),
       /* @__PURE__ */ jsxs("p", { className: "flex items-center gap-2", children: [
-        /* @__PURE__ */ jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 32 32", "stroke-width": "1.5", className: "w-5 h-5", children: [
-          /* @__PURE__ */ jsx("path", { d: "M21 16h2v2h-2zM9 16h8v2H9zm12-4h2v2h-2zM9 12h8v2H9zm0-4h14v2H9z", fill: "#FFF" }),
-          /* @__PURE__ */ jsx("path", { d: "M25 2H7a2 2 0 0 0-2 2v25a1 1 0 0 0 1 1h1a1 1 0 0 0 .8-.4l2.2-3 2.2 3a1 1 0 0 0 1.6 0l2.2-3 2.2 3a1 1 0 0 0 1.6 0l2.2-3 2.2 3a1 1 0 0 0 .8.4h1a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2m0 25.3-2.2-2.9a1 1 0 0 0-1.6 0l-2.2 3-2.2-3a1 1 0 0 0-1.6 0l-2.2 3-2.2-3a1 1 0 0 0-1.6 0l-2.2 3V4h18Z", fill: "#FFF" }),
-          /* @__PURE__ */ jsx("path", { "data-name": "<Transparent Rectangle>", fill: "none", d: "M0 0h32v32H0z" })
-        ] }),
-        "愛心碼：0329"
+        /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: "1.5", stroke: "currentColor", className: "w-5 h-5", children: /* @__PURE__ */ jsx("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" }) }),
+        "sdparty.tw@gmail.com"
       ] })
+    ] }),
+    /* @__PURE__ */ jsx("span", { className: "footer-title mt-4", children: "社群媒體" }),
+    /* @__PURE__ */ jsxs("div", { className: "flex gap-4", children: [
+      /* @__PURE__ */ jsx("a", { href: "https://facebook.com/sdparty.tw", className: "btn btn-circle btn-ghost", children: /* @__PURE__ */ jsx(FacebookIcon, {}) }),
+      /* @__PURE__ */ jsx("a", { href: "https://instagram.com", className: "btn btn-circle btn-ghost", children: /* @__PURE__ */ jsx(InstagramIcon, {}) }),
+      /* @__PURE__ */ jsx("a", { href: "https://youtube.com", className: "btn btn-circle btn-ghost", children: /* @__PURE__ */ jsx(Youtube, {}) }),
+      /* @__PURE__ */ jsx("a", { href: "https://threads.com", className: "btn btn-circle btn-ghost", children: /* @__PURE__ */ jsx(ThreadsIcon, {}) }),
+      /* @__PURE__ */ jsx("a", { href: "https://threads.com", className: "btn btn-circle btn-ghost", children: /* @__PURE__ */ jsx(LineIcon, {}) })
     ] })
-  ] });
+  ] }) });
 }
 
 function Footer() {
@@ -131,46 +179,8 @@ function Footer() {
     /* @__PURE__ */ jsx("link", { rel: "stylesheet", href: "./node_modules/lineicons/dist/lineicons.css" }),
     /* @__PURE__ */ jsxs("footer", { className: "footer lg:footer-horizontal text-white p-10", id: "footer-color", children: [
       /* @__PURE__ */ jsx(LogoZone, {}),
-      /* @__PURE__ */ jsxs("nav", { children: [
-        /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h6", { className: "footer-title", children: "最新消息" }) }),
-        /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-2 text-white", children: [
-          /* @__PURE__ */ jsx("a", { href: "/news/press", className: "link link-hover", children: "新聞稿" }),
-          /* @__PURE__ */ jsx("a", { href: "/news/events", className: "link link-hover", children: "活動資訊" }),
-          /* @__PURE__ */ jsx("a", { href: "/news/issues", className: "link link-hover", children: "議題發言" }),
-          /* @__PURE__ */ jsx("a", { href: "/news/clarification", className: "link link-hover", children: "闢謠專區" })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxs("nav", { children: [
-        /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("h6", { className: "footer-title", children: "關於社民黨" }) }),
-        /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-2 text-white", children: [
-          /* @__PURE__ */ jsx("a", { href: "/about", className: "link link-hover", children: "簡介" }),
-          /* @__PURE__ */ jsx("a", { href: "/about/team", className: "link link-hover", children: "組織團隊" }),
-          /* @__PURE__ */ jsx("a", { href: "/about/officials", className: "link link-hover", children: "黨公職" }),
-          /* @__PURE__ */ jsx("a", { href: "/about/documents", className: "link link-hover", children: "黨務文件" }),
-          /* @__PURE__ */ jsx("a", { href: "/about/finance", className: "link link-hover", children: "財報公開專區" })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "footer-end", children: [
-        /* @__PURE__ */ jsxs("div", { children: [
-          /* @__PURE__ */ jsx("span", { className: "footer-title", children: "聯絡我們" }),
-          /* @__PURE__ */ jsxs("p", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", "stroke-width": "1.5", stroke: "currentColor", className: "w-5 h-5", children: /* @__PURE__ */ jsx("path", { d: "M21.51 5.77a2.25 2.25 0 0 0-2.88-2.88l-14 5.1a2.25 2.25 0 0 0-.07 4.2l5.17 2.07q.3.12.41.42l2.07 5.16a2.25 2.25 0 0 0 4.2-.07z", fill: "#fff" }) }),
-            "台北市中山區林森北路100號8樓之4"
-          ] }),
-          /* @__PURE__ */ jsxs("p", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", "stroke-width": "1.5", stroke: "currentColor", className: "w-5 h-5", children: /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", d: "M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" }) }),
-            "sdparty.tw@gmail.com"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsx("span", { className: "footer-title mt-4", children: "社群媒體" }),
-        /* @__PURE__ */ jsxs("div", { className: "flex gap-4", children: [
-          /* @__PURE__ */ jsx("a", { href: "https://facebook.com/sdparty.tw", className: "btn btn-circle btn-ghost", children: /* @__PURE__ */ jsx(FacebookIcon, {}) }),
-          /* @__PURE__ */ jsx("a", { href: "https://instagram.com", className: "btn btn-circle btn-ghost", children: /* @__PURE__ */ jsx(InstagramIcon, {}) }),
-          /* @__PURE__ */ jsx("a", { href: "https://youtube.com", className: "btn btn-circle btn-ghost", children: /* @__PURE__ */ jsx(Youtube, {}) }),
-          /* @__PURE__ */ jsx("a", { href: "https://threads.com", className: "btn btn-circle btn-ghost", children: /* @__PURE__ */ jsx(ThreadsIcon, {}) }),
-          /* @__PURE__ */ jsx("a", { href: "https://threads.com", className: "btn btn-circle btn-ghost", children: /* @__PURE__ */ jsx(LineIcon, {}) })
-        ] })
-      ] })
+      /* @__PURE__ */ jsx(FooterNavigation, {}),
+      /* @__PURE__ */ jsx(ContactButton, {})
     ] })
   ] });
 }
@@ -179,17 +189,17 @@ const $$Astro$1 = createAstro();
 const $$Layout = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Layout;
-  return renderTemplate`<html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"${addAttribute(Astro2.generator, "content")}><title>Astro Basics</title>${renderHead()}</head> <body data-astro-cid-sckkx6r4> ${renderComponent($$result, "Navbar", $$Navbar, { "data-astro-cid-sckkx6r4": true })} ${renderSlot($$result, $$slots["default"])} ${renderComponent($$result, "Footer", Footer, { "client:visible": true, "client:component-hydration": "visible", "client:component-path": "D:/GitHub/sdp-org/src/components/Footer.tsx", "client:component-export": "default", "data-astro-cid-sckkx6r4": true })} </body></html>`;
-}, "D:/GitHub/sdp-org/src/layouts/Layout.astro", void 0);
+  return renderTemplate`<html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"${addAttribute(Astro2.generator, "content")}><title>Astro Basics</title>${renderHead()}</head> <body data-astro-cid-sckkx6r4> ${renderComponent($$result, "Navbar", $$Navbar, { "data-astro-cid-sckkx6r4": true })} ${renderSlot($$result, $$slots["default"])} ${renderComponent($$result, "Footer", Footer, { "client:visible": true, "client:component-hydration": "visible", "client:component-path": "D:/Documents/GitHub/sdp-org/src/components/Footer.tsx", "client:component-export": "default", "data-astro-cid-sckkx6r4": true })} </body></html>`;
+}, "D:/Documents/GitHub/sdp-org/src/layouts/Layout.astro", void 0);
 
 const $$Astro = createAstro();
 const $$Index = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Welcome", $$Welcome, {})} ` })}`;
-}, "D:/GitHub/sdp-org/src/pages/index.astro", void 0);
+}, "D:/Documents/GitHub/sdp-org/src/pages/index.astro", void 0);
 
-const $$file = "D:/GitHub/sdp-org/src/pages/index.astro";
+const $$file = "D:/Documents/GitHub/sdp-org/src/pages/index.astro";
 const $$url = "";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

@@ -494,6 +494,6 @@ const renderer = {
 };
 var server_default = renderer;
 
-const renderers = [Object.assign({"name":"@astrojs/react","clientEntrypoint":"@astrojs/react/client.js","serverEntrypoint":"@astrojs/react/server.js"}, { ssr: _renderer0 }),Object.assign({"name":"@astrojs/svelte","clientEntrypoint":"@astrojs/svelte/client.js","serverEntrypoint":"@astrojs/svelte/server.js"}, { ssr: _renderer1 }),Object.assign({"name":"astro:jsx","serverEntrypoint":"file:///D:/GitHub/sdp-org/node_modules/.pnpm/@astrojs+mdx@4.2.1_astro@5._0e4a1d676c07e3d35041bdbe837a5784/node_modules/@astrojs/mdx/dist/server.js"}, { ssr: server_default }),];
+const renderers = [Object.assign({"name":"@astrojs/react","clientEntrypoint":"@astrojs/react/client.js","serverEntrypoint":"@astrojs/react/server.js"}, { ssr: _renderer0 }),Object.assign({"name":"@astrojs/svelte","clientEntrypoint":"@astrojs/svelte/client.js","serverEntrypoint":"@astrojs/svelte/server.js"}, { ssr: _renderer1 }),Object.assign({"name":"astro:jsx","serverEntrypoint":"file:///D:/Documents/GitHub/sdp-org/node_modules/.pnpm/@astrojs+mdx@4.2.1_astro@5._0e4a1d676c07e3d35041bdbe837a5784/node_modules/@astrojs/mdx/dist/server.js"}, { ssr: server_default }),];
 
 export { pop as a, push as p, renderers as r };

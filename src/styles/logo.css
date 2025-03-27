@@ -22,14 +22,14 @@
 
     .logo-container:hover .primary-logo {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(15px);
     }
 
     .logo-container:hover .secondary-logo {
         opacity: 1;
-        transform: translateY(-10px);
+        transform: translateY(-20px);
         /* 放大第二個Logo */
-        transform: translateY(-10px) scale(2);
+        transform: translateY(-10px) scale(2.3);
         /* 調整位置以保持居中 */
         transform-origin: center;
 
