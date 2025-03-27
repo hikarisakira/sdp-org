@@ -1,7 +1,7 @@
-import { g as createComponent, h as createAstro, i as renderTemplate, m as maybeRenderHead, j as addAttribute, k as renderComponent, l as renderHead, n as renderSlot } from '../chunks/astro/server_DO-K2bh7.mjs';
+import { g as createComponent, h as createAstro, i as renderTemplate, m as maybeRenderHead, j as addAttribute, k as renderComponent, l as renderScript, n as renderHead, o as renderSlot } from '../chunks/astro/server_B7Na81vI.mjs';
 /* empty css                                 */
-import { p as push, a as pop } from '../chunks/_@astro-renderers_Dywvm6Jk.mjs';
-export { r as renderers } from '../chunks/_@astro-renderers_Dywvm6Jk.mjs';
+import { p as push, a as pop } from '../chunks/_@astro-renderers_D3dbhFH-.mjs';
+export { r as renderers } from '../chunks/_@astro-renderers_D3dbhFH-.mjs';
 import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 
 const astroLogo = new Proxy({"src":"/_astro/astro.CXuftnGC.svg","width":115,"height":48,"format":"svg"}, {
@@ -30,9 +30,9 @@ const background = new Proxy({"src":"/_astro/background.Mahwsfbs.svg","width":14
 						}
 					});
 
-const $$Astro$2 = createAstro();
+const $$Astro$3 = createAstro();
 const $$Welcome = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$Welcome;
   return renderTemplate`${maybeRenderHead()}<div id="container" data-astro-cid-mmc7otgs> <img id="background"${addAttribute(background.src, "src")} alt="" fetchpriority="high" data-astro-cid-mmc7otgs> <main data-astro-cid-mmc7otgs> <section id="hero" data-astro-cid-mmc7otgs> <a href="https://astro.build" data-astro-cid-mmc7otgs><img${addAttribute(astroLogo.src, "src")} width="115" height="48" alt="Astro Homepage" data-astro-cid-mmc7otgs></a> <h1 data-astro-cid-mmc7otgs>
 To get started, open the <code data-astro-cid-mmc7otgs><pre data-astro-cid-mmc7otgs>src/pages</pre></code> directory in your project.
@@ -185,11 +185,20 @@ function Footer() {
   ] });
 }
 
+const $$Astro$2 = createAstro();
+const $$Index$1 = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  Astro2.self = $$Index$1;
+  const propsStr = JSON.stringify(Astro2.props);
+  const paramsStr = JSON.stringify(Astro2.params);
+  return renderTemplate`${renderComponent($$result, "vercel-speed-insights", "vercel-speed-insights", { "data-props": propsStr, "data-params": paramsStr, "data-pathname": Astro2.url.pathname })} ${renderScript($$result, "D:/Documents/GitHub/sdp-org/node_modules/.pnpm/@vercel+speed-insights@1.2._55f649ff82627919f6e455abedb9af7a/node_modules/@vercel/speed-insights/dist/astro/index.astro?astro&type=script&index=0&lang.ts")}`;
+}, "D:/Documents/GitHub/sdp-org/node_modules/.pnpm/@vercel+speed-insights@1.2._55f649ff82627919f6e455abedb9af7a/node_modules/@vercel/speed-insights/dist/astro/index.astro", void 0);
+
 const $$Astro$1 = createAstro();
 const $$Layout = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Layout;
-  return renderTemplate`<html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"${addAttribute(Astro2.generator, "content")}><title>Astro Basics</title>${renderHead()}</head> <body data-astro-cid-sckkx6r4> ${renderComponent($$result, "Navbar", $$Navbar, { "data-astro-cid-sckkx6r4": true })} ${renderSlot($$result, $$slots["default"])} ${renderComponent($$result, "Footer", Footer, { "client:visible": true, "client:component-hydration": "visible", "client:component-path": "D:/Documents/GitHub/sdp-org/src/components/Footer.tsx", "client:component-export": "default", "data-astro-cid-sckkx6r4": true })} </body></html>`;
+  return renderTemplate`<html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"${addAttribute(Astro2.generator, "content")}><title>Astro Basics</title>${renderHead()}</head> <body data-astro-cid-sckkx6r4> ${renderComponent($$result, "Navbar", $$Navbar, { "data-astro-cid-sckkx6r4": true })} ${renderSlot($$result, $$slots["default"])} ${renderComponent($$result, "Footer", Footer, { "client:visible": true, "client:component-hydration": "visible", "client:component-path": "D:/Documents/GitHub/sdp-org/src/components/Footer.tsx", "client:component-export": "default", "data-astro-cid-sckkx6r4": true })} ${renderComponent($$result, "SpeedInsights", $$Index$1, { "data-astro-cid-sckkx6r4": true })} </body></html>`;
 }, "D:/Documents/GitHub/sdp-org/src/layouts/Layout.astro", void 0);
 
 const $$Astro = createAstro();
