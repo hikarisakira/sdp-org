@@ -1,7 +1,7 @@
 import { r as renderers } from './chunks/_@astro-renderers_D3dbhFH-.mjs';
 import { a as actions } from './chunks/_noop-actions_CfKMStZn.mjs';
 import { c as createExports } from './chunks/entrypoint_B26Gd4Jv.mjs';
-import { manifest } from './manifest_DbWuBNsc.mjs';
+import { manifest } from './manifest_P1pkJV6g.mjs';
 
 const serverIslandMap = new Map();;
 
@@ -20,7 +20,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "middlewareSecret": "2faf2133-883d-4dfd-962c-3c39c5757a05",
+    "middlewareSecret": "2075d660-5785-45e1-b53a-d79fc1e34d7b",
     "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);

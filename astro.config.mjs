@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 
 import svelte from '@astrojs/svelte';
 
-import vercel from '@astrojs/vercel';
+import vercelServerless from '@astrojs/vercel/serverless';
 
 import mdx from '@astrojs/mdx';
 
@@ -15,7 +15,12 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   integrations: [react(), svelte(), mdx()],
   output: 'server',
-  adapter: vercel(),
+  adapter: vercelServerless({
+    webAnalytics: {
+      enabled: true,
+    },
+    maxDuration: 8,
+  }),
   vite:{
     // @ts-ignore
     plugins: [tailwindcss()],
