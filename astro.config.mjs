@@ -14,13 +14,14 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), svelte(), mdx()],
-  output: 'server',
+  output: 'static',
   adapter: vercelServerless({
     webAnalytics: {
       enabled: true,
     },
     maxDuration: 8,
   }),
+  // 添加以下設定
   vite:{
     // @ts-ignore
     plugins: [tailwindcss()],
