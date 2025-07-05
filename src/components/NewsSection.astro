@@ -1,0 +1,69 @@
+
+---
+// src/components/NewsSection.astro
+export interface Props {
+  newsItems: Array<{
+    id: string;
+    title: string;
+    excerpt: string;
+    date: string;
+    category: string;
+    image: string;
+  }>;
+}
+
+const { newsItems } = Astro.props;
+const safeNewsItems = Array.isArray(newsItems) ? newsItems : [];
+---
+
+<section class="py-16 bg-base-200">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-primary mb-4">最新消息</h2>
+      <p class="text-lg text-base-content opacity-60">掌握社民黨最新動態與政策發展</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {safeNewsItems.map((item) => (
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+          <figure>
+            <img src={item.image} alt={item.title} class="h-48 w-full object-cover" />
+          </figure>
+          <div class="card-body">
+            <div class="flex justify-between items-center mb-2">
+              <span class="badge badge-primary">{item.category}</span>
+              <span class="text-sm text-base-content opacity-60">{item.date}</span>
+            </div>
+            <h3 class="card-title text-lg">{item.title}</h3>
+            <p class="text-base-content opacity-80">{item.excerpt}</p>
+            <div class="card-actions justify-end mt-4">
+              <a href={`/news/${item.id}`} class="btn btn-primary btn-sm">閱讀更多</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="/news" class="btn btn-primary btn-lg">查看所有消息</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-primary {
+    color: #EB5078;
+  }
+  .btn-primary {
+    background-color: #EB5078;
+    border-color: #EB5078;
+  }
+  .btn-primary:hover {
+    background-color: #d63d66;
+    border-color: #d63d66;
+  }
+  .badge-primary {
+    background-color: #EB5078;
+    border-color: #EB5078;
+  }
+</style>

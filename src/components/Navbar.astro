@@ -1,32 +1,101 @@
----
-import DesktopMenu from './navbar/DesktopMenu.svelte';
-import MobileMenu from './navbar/MobileMenu.svelte';
 
-import '../styles/logo.css';
+---
+// src/components/Navbar.astro
 ---
 
-<nav class="navbar bg-base-100">
-  <!-- 手機版選單按鈕（左側） -->
-  <div class="navbar-start md:hidden">
-    <MobileMenu client:visible />
-  </div>
-  
-  <!-- 桌面版左側 -->
-  <div class="navbar-start hidden md:flex">
-    <DesktopMenu client:load />
-  </div>
-
-  <!-- Logo居中 -->
-  <div class="navbar-center relative">
-    <a href="/" class="normal-case text-xl logo-container">
-      <img src="/logo.svg" alt="社會民主黨" class="h-12 lg:h-16 primary-logo" />
-      <img src="/logo-font.svg" alt="社會民主黨" class="h-12 md:h-16 logo secondary-logo absolute" />
+<div class="navbar bg-base-100 shadow-lg">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost lg:hidden">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+        </svg>
+      </label>
+      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a href="/">首頁</a></li>
+        <li class="menu-dropdown">
+          <a>最新消息</a>
+          <ul class="menu-dropdown-content">
+            <li><a href="/news/press">新聞稿</a></li>
+            <li><a href="/news/events">活動資訊</a></li>
+            <li><a href="/news/statements">議題發言</a></li>
+            <li><a href="/news/clarification">闢謠專區</a></li>
+          </ul>
+        </li>
+        <li class="menu-dropdown">
+          <a>關於社民黨</a>
+          <ul class="menu-dropdown-content">
+            <li><a href="/about">簡介</a></li>
+            <li><a href="/about/team">組織團隊</a></li>
+            <li><a href="/about/officials">黨公職</a></li>
+            <li><a href="/about/documents">黨務文件</a></li>
+            <li><a href="/about/reports">財報公開</a></li>
+          </ul>
+        </li>
+        <li><a href="/join">加入我們</a></li>
+        <li class="menu-dropdown">
+          <a>捐款支持</a>
+          <ul class="menu-dropdown-content">
+            <li><a href="/donate/single">單筆捐款</a></li>
+            <li><a href="/donate/monthly">定期定額</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <a class="btn btn-ghost normal-case text-xl" href="/">
+      <img src="/images/sdp-logo.png" alt="社民黨" class="h-8 mr-2">
+      社會民主黨
     </a>
   </div>
 
-  <!-- 桌面版右側 -->
-  <div class="navbar-end hidden md:flex">
-    <a href="/join" class="btn btn-primary">加入我們</a>
-    <a href="/donate" class="btn btn-secondary ml-2">捐款支持</a>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="/" class="text-primary font-semibold">首頁</a></li>
+      <li class="dropdown dropdown-hover">
+        <label tabindex="0" class="btn btn-ghost">最新消息</label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+          <li><a href="/news/press">新聞稿</a></li>
+          <li><a href="/news/events">活動資訊</a></li>
+          <li><a href="/news/statements">議題發言</a></li>
+          <li><a href="/news/clarification">闢謠專區</a></li>
+        </ul>
+      </li>
+      <li class="dropdown dropdown-hover">
+        <label tabindex="0" class="btn btn-ghost">關於社民黨</label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+          <li><a href="/about">簡介</a></li>
+          <li><a href="/about/team">組織團隊</a></li>
+          <li><a href="/about/officials">黨公職</a></li>
+          <li><a href="/about/documents">黨務文件</a></li>
+          <li><a href="/about/reports">財報公開</a></li>
+        </ul>
+      </li>
+      <li><a href="/join">加入我們</a></li>
+      <li class="dropdown dropdown-hover">
+        <label tabindex="0" class="btn btn-ghost">捐款支持</label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+          <li><a href="/donate/single">單筆捐款</a></li>
+          <li><a href="/donate/monthly">定期定額</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
-</nav>
+
+  <div class="navbar-end">
+    <button class="btn btn-primary">立即捐款</button>
+  </div>
+</div>
+
+<style>
+  .text-primary {
+    color: #EB5078;
+  }
+  .btn-primary {
+    background-color: #EB5078;
+    border-color: #EB5078;
+  }
+  .btn-primary:hover {
+    background-color: #d63d66;
+    border-color: #d63d66;
+  }
+</style>
