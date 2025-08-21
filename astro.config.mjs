@@ -9,11 +9,11 @@ import vercel from '@astrojs/vercel';
 
 import mdx from '@astrojs/mdx';
 
-import tailwindcss from '@tailwindcss/vite';
+import unocss from '@unocss/astro';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), svelte(), mdx()],
+  integrations: [react(), svelte(), mdx(), unocss({ injectReset: true })],
   output: 'static',
   adapter: vercel({
     webAnalytics: {
@@ -24,6 +24,5 @@ export default defineConfig({
   // 添加以下設定
   vite:{
     // @ts-ignore
-    plugins: [tailwindcss()],
   }
 });

@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@ameinhardt/unocss-preset-daisy": "^1.1.8",
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/react": "^4.3.0",
     "@astrojs/svelte": "^7.1.0",
@@ -16,6 +17,7 @@
     "@tailwindcss/vite": "^4.0.5",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
+    "@unocss/astro": "^66.4.2",
     "@vercel/speed-insights": "^1.2.0",
     "astro": "^5.11.0",
     "daisyui": "^5.0.9",
@@ -23,11 +25,14 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "svelte": "^5.19.9",
-    "tailwindcss": "^4.0.15",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "unocss": "^66.4.2"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16"
+    "@unocss/extractor-svelte": "^66.4.2",
+    "@unocss/preset-typography": "^66.4.2",
+    "@unocss/preset-wind4": "^66.4.2",
+    "@unocss/reset": "^66.4.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

@@ -15,7 +15,7 @@ export default function FooterNavigation() {
 
             <nav>
                 <div>
-                    <h6 className="footer-title">關於社民黨</h6>
+                    <h6 className="footer-title">關於我們</h6>
                 </div>
                 <div className="flex flex-col gap-2 text-white">
                     <a href="/about" className="link link-hover">簡介</a>
