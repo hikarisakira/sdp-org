@@ -2,7 +2,7 @@ export default function LogoZone() {
     return (
         <aside className="items-center sm:flex">
             <div className="flex items-center mb-4">
-                <img loading="lazy" src="/footer-logo.min.svg" alt="社會民主黨" className="h-32" />
+                <img loading="lazy" src="/footer-logo.min.svg" alt="社會民主黨" className="h-42" />
             </div>
             <div className="flex flex-col  mb-4">
                 <span className="footer-title">支持社民 一同前進</span>
