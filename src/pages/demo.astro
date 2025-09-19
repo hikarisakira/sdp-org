@@ -1,0 +1,367 @@
+---
+// demo.astro - 示範新導航欄的頁面
+import TransparentLayout from '../layouts/TransparentLayout.astro';
+---
+
+<TransparentLayout title="導航欄示範 - 社會民主黨" description="展示現代化導航欄的設計和互動效果">
+  
+  <!-- Hero Section -->
+  <section class="hero-section full-height-section">
+    <div class="hero-background">
+      <div class="hero-overlay"></div>
+      <div class="hero-content content-container">
+        <h1 class="hero-title">現代化導航欄示範</h1>
+        <p class="hero-subtitle">
+          這是一個展示新導航欄功能的示範頁面。<br/>
+          導航欄具備透明背景、Logo 居中、全畫面選單等特性。
+        </p>
+        <div class="hero-buttons">
+          <a href="#features" class="btn btn-primary">了解更多</a>
+          <a href="/" class="btn btn-secondary">回到首頁</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="content-container">
+      <h2 class="section-title">導航欄特性</h2>
+      <div class="features-grid">
+        
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3 class="feature-title">透明背景</h3>
+          <p class="feature-description">
+            參考芬蘭社會民主黨官網，導航欄採用透明設計，
+            讓背景內容可以在導航欄下方展示。
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h3 class="feature-title">Logo 居中</h3>
+          <p class="feature-description">
+            參考嘉宏遊艇官網設計，Logo 位於導航欄的中央位置，
+            創造平衡和視覺焦點。
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🗺️</div>
+          <h3 class="feature-title">全畫面選單</h3>
+          <p class="feature-description">
+            參考得正官網設計，點擊 Menu 按鈕後，
+            選單以全畫面覆蓋的形式展現。
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3 class="feature-title">響應式設計</h3>
+          <p class="feature-description">
+            完全適應各種裝置尺寸，從手機到桌電都能完美展示。
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🌊</div>
+          <h3 class="feature-title">滾動檢測</h3>
+          <p class="feature-description">
+            滾動時導航欄會自動切換背景色彩，提供更好的閱讀體驗。
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">♾️</div>
+          <h3 class="feature-title">無障礙支持</h3>
+          <p class="feature-description">
+            支持鍵盤導航、螢幕閱讀器，並遵循WCAG無障礙指導原則。
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <!-- Usage Section -->
+  <section class="usage-section">
+    <div class="content-container">
+      <h2 class="section-title">使用方法</h2>
+      <div class="usage-content">
+        <div class="usage-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>更替導航欄組件</h3>
+            <p>在你的佈局檔案中，將原本的 Navbar 更換為 ModernNavbar。</p>
+          </div>
+        </div>
+        
+        <div class="usage-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>使用透明佈局</h3>
+            <p>對於需要透明導航欄的頁面，使用 TransparentLayout 佈局。</p>
+          </div>
+        </div>
+        
+        <div class="usage-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>自定義選單項目</h3>
+            <p>在 ModernNavbarClient.svelte 中修改 menuItems 配置，加入你的選單項目。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</TransparentLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    background: linear-gradient(135deg, #1C1C19 0%, #2c2c28 100%);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .hero-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(211, 170, 112, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(211, 170, 112, 0.1) 0%, transparent 50%);
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(28, 28, 25, 0.3);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #ffffff, #D3AA70);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  .btn-primary {
+    background: #D3AA70;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: transparent;
+    border-color: #D3AA70;
+    color: #D3AA70;
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    border-color: white;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background: white;
+    color: #1C1C19;
+    transform: translateY(-2px);
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 5rem 0;
+    background: #f8f9fa;
+  }
+  
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1C1C19;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+  
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1C1C19;
+  }
+  
+  .feature-description {
+    color: #6b7280;
+    line-height: 1.6;
+  }
+  
+  /* Usage Section */
+  .usage-section {
+    padding: 5rem 0;
+    background: #1C1C19;
+    color: white;
+  }
+  
+  .usage-section .section-title {
+    color: white;
+  }
+  
+  .usage-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .usage-step {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    align-items: flex-start;
+  }
+  
+  .step-number {
+    background: #D3AA70;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  
+  .step-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #D3AA70;
+  }
+  
+  .step-content p {
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+  
+  /* 響應式設計 */
+  @media (max-width: 768px) {
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .btn {
+      width: 200px;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .usage-step {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+    
+    .step-number {
+      margin: 0 auto;
+    }
+  }
+  
+  /* 深色模式支持 */
+  @media (prefers-color-scheme: dark) {
+    .features-section {
+      background: #2c2c28;
+    }
+    
+    .section-title {
+      color: white;
+    }
+    
+    .feature-card {
+      background: #3c3c38;
+    }
+    
+    .feature-title {
+      color: #D3AA70;
+    }
+    
+    .feature-description {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+</style>
