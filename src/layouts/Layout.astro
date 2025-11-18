@@ -1,5 +1,6 @@
 ---
-import Navbar from '../components/Navbar.astro';
+import ModernNavbar from '../components/navbar/ModernNavbar.astro';
+// import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.tsx';
 import  SpeedInsights  from "@vercel/speed-insights/astro";
 import { ClientRouter } from 'astro:transitions';
@@ -16,7 +17,7 @@ import { ClientRouter } from 'astro:transitions';
 		<ClientRouter />
 	</head>
 	<body>
-		<Navbar transition:persist="navbar"/>
+		<ModernNavbar transition:persist="navbar"/>
 		<slot />
 		<Footer transition:persist="footer" client:visible />
 		<SpeedInsights />

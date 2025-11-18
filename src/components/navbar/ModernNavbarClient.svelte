@@ -70,12 +70,15 @@
   });
   
   onDestroy(() => {
-    // 移除事件監聽器
-    window.removeEventListener('scroll', handleScroll);
-    window.removeEventListener('keydown', handleKeydown);
-    
-    // 恢復頁面滾動
-    document.body.style.overflow = '';
+    // Check if code is running in browser environment
+    if (typeof window !== 'undefined') {
+      // 移除事件監聽器
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleKeydown);
+      
+      // 恢復頁面滾動
+      document.body.style.overflow = '';
+    }
   });
 </script>
 
@@ -128,31 +131,6 @@
           </a>
         {/each}
       </div>
-      
-      <!-- 底部操作區 -->
-      <div class="menu-footer">
-        <!-- 社交鏈結 -->
-        <div class="social-links">
-          {#each socialLinks as link}
-            <a 
-              href={link.href} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="social-link"
-              aria-label={link.name}
-            >
-              <i class="lni lni-{link.icon}"></i>
-            </a>
-          {/each}
-        </div>
-        
-        <!-- 行動按鈕 -->
-        <div class="action-buttons">
-          <a href="/join" class="btn btn-primary" on:click={closeMenu}>加入我們</a>
-          <a href="https://sdparty.oen.tw/#" target="_blank" class="btn btn-secondary">捐款支持</a>
-        </div>
-      </div>
-      
     </div>
   </div>
 {/if}

@@ -3,8 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "tinacms dev -c \"astro dev\"",
     "build": "astro build",
+    "tinabuild": "tinacms init backend",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -25,10 +26,13 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "svelte": "^5.19.9",
+    "tinacms": "^2.9.0",
     "typescript": "^5.7.3",
     "unocss": "^66.4.2"
   },
   "devDependencies": {
+    "@tinacms/cli": "^1.11.0",
+    "@types/node": "^24.9.1",
     "@unocss/extractor-svelte": "^66.4.2",
     "@unocss/preset-typography": "^66.4.2",
     "@unocss/preset-wind4": "^66.4.2",
