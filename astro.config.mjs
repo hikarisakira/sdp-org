@@ -1,28 +1,18 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
-import react from '@astrojs/react';
-
-import svelte from '@astrojs/svelte';
-
-import vercel from '@astrojs/vercel';
-
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
+import react from '@astrojs/react';
+import tinaDirective from "./astro-tina-directive/register"
 
-import unocss from '@unocss/astro';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), svelte(), mdx(), unocss({ injectReset: true })],
-  output: 'static',
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-    maxDuration: 8,
-  }),
-  // 添加以下設定
-  vite:{
-    // @ts-ignore
-  }
+  site: process.env.SITE_URL || `https://${process.env.VERCEL_URL}`,
+  integrations: [mdx(), sitemap(), react(), tinaDirective()],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
