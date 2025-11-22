@@ -70,11 +70,12 @@ import IconLink from "./react/IconLink";
         <h2><a href="/">{config.seo.title}</a></h2>
     </div>
     <div class="navbar-end">
-        <a href="/join" class="btn btn-primary">加入我們</a>
+        <a href="/join" class="btn btn-primary" id="a-link">加入我們</a>
         <a
             href="https://sdparty.oen.tw/#"
             target="_blank"
-            class="btn btn-secondary ml-2">捐款支持</a
+            class="btn btn-secondary"
+            id="a-link">捐款支持</a
         >
     </div>
 </nav>
@@ -100,12 +101,7 @@ import IconLink from "./react/IconLink";
         align-items: center;
         justify-content: space-between;
     }
-    nav a {
-        padding: 1em 1em;
-        color: var(--color-white);
-        border-bottom: 4px solid transparent;
-        text-decoration: none;
-    }
+
     nav a.active {
         text-decoration: none;
         border-bottom-color: var(--accent);
@@ -118,5 +114,8 @@ import IconLink from "./react/IconLink";
         .social-links {
             display: none;
         }
+    }
+    #a-link {
+        color: var(--color-white);
     }
 </style>
