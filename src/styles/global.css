@@ -45,6 +45,10 @@ body {
     color: rgb(var(--gray-dark));
     font-size: 20px;
     line-height: 1.7;
+    overflow-x: hidden;
+}
+body.menu-open {
+    overflow: hidden;
 }
 main {
     width: 720px;

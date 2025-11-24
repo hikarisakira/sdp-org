@@ -2,6 +2,23 @@
 import HeaderLink from "./HeaderLink.astro";
 import config from "../content/config/config.json";
 import IconLink from "./react/IconLink";
+import FullscreenMenu from "./FullscreenMenu/FullscreenMenu";
+
+const menuItems = [
+    { label: "Homepage", href: "/" },
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "About", href: "/about" },
+    { label: "加入我們", href: "/join" },
+    { label: "捐款支持", href: "https://sdparty.oen.tw/#" },
+];
+
+const socialLinks = [
+    { name: "Facebook", url: "https://www.facebook.com/sdparty.tw" },
+    { name: "Instagram", url: "https://www.instagram.com/sdparty.tw/" },
+    { name: "Threads", url: "https://www.threads.net/sdparty.tw" },
+    { name: "YouTube", url: "https://www.youtube.com/@sdpartytw" },
+    { name: "Line@", url: "https://twitter.com/sdparty_tw" },
+];
 ---
 
 <!-- <header>
@@ -56,14 +73,6 @@ import IconLink from "./react/IconLink";
                     ></polygon>
                 </svg>
             </label>
-            <ul
-                tabindex="-1"
-                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-                <li><a>Homepage</a></li>
-                <li><a>Portfolio</a></li>
-                <li><a>About</a></li>
-            </ul>
         </div>
     </div>
     <div class="navbar-center">

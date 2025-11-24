@@ -1,0 +1,44 @@
+---
+// src/layouts/Layout.astro
+import FullscreenNav from "../components/menu/FullscreenNav";
+import config from "../content/config/config.json";
+
+const navLinks = [
+    { href: "/", label: "Homepage" },
+    { href: "/portfolio", label: "Portfolio" },
+    { href: "/about", label: "About" },
+    { href: "/join", label: "加入我們" },
+    { href: "/donate", label: "捐款支持" },
+];
+
+const socialLinks = [
+    { platform: "GitHub", url: "https://github.com/yourname" },
+    { platform: "Twitter", url: "https://twitter.com/yourname" },
+    { platform: "LinkedIn", url: "https://linkedin.com/in/yourname" },
+];
+---
+
+<!doctype html>
+<html lang="zh-TW" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{config.seo.title}</title>
+    </head>
+    <body>
+        <!-- 全螢幕選單 (React 島嶼) -->
+        <FullscreenNav
+            client:load
+            links={navLinks}
+            logo={config.seo.title}
+            socialLinks={socialLinks}
+        />
+
+        <!-- 原有的 Header (保留用於 SEO 或備用) -->
+        <!-- 可以選擇隱藏或移除 -->
+
+        <main>
+            <slot />
+        </main>
+    </body>
+</html>
