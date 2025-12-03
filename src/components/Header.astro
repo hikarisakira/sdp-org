@@ -35,7 +35,7 @@ const menuStructure = [
         ],
     },
     { type: "link", label: "Portfolio", href: "/portfolio" },
-    { type: "link", label: "加入我們", href: "/join", primary: true },
+    { type: "link", label: "加入我們", href: "/join", secondary: true },
     {
         type: "link",
         label: "捐款支持",
@@ -83,17 +83,8 @@ const socialLinks = [
     </div>
 
     <div class="navbar-center">
-        <a href="/" class="normal-case text-xl logo-container">
-            <img
-                src="/logo.svg"
-                alt="社會民主黨"
-                class="h-12 lg:h-16 primary-logo"
-            />
-            <img
-                src="/logo-font.svg"
-                alt="社會民主黨"
-                class="h-12 md:h-16 logo secondary-logo absolute"
-            />
+        <a href="/" class="flex items-center">
+            <img src="/logo.svg" alt={config.seo.title} class="navbar-logo" />
         </a>
     </div>
 
@@ -110,10 +101,6 @@ const socialLinks = [
 <!-- 全螢幕選單 HTML -->
 <div id="fullscreen-menu" class="fullscreen-menu">
     <div class="fullscreen-menu__content">
-        <div class="fullscreen-menu__logo">
-            <a href="/">{config.seo.title}</a>
-        </div>
-
         <!-- 主選單容器 -->
         <nav class="fullscreen-menu__nav" id="main-menu">
             {
