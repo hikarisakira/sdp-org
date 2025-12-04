@@ -61,7 +61,7 @@ export const CarouselCollection: Collection = {
                 {
                   type: "image",
                   name: "image",
-                  label: "Background Image",
+                  label: "圖片，請切成正方形，512*512px為佳",
                   required: true,
                 },
                 {

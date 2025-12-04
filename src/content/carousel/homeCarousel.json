@@ -7,7 +7,7 @@
       "delay": 5000,
       "slides": [
         {
-          "image": "/blog-placeholder-1.jpg",
+          "image": "/testing.jpg",
           "title": "這邊是標題",
           "subtitle": "這邊有一些最新消息的簡述,大概是這樣",
           "showButton": true,

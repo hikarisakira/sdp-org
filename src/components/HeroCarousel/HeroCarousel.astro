@@ -1,30 +1,25 @@
 ---
-import HeroCarouselReact from "./HeroCarousel";
+import HeroCarouselClient from "./HeroCarousel.tsx";
+import "./hero-carousel.css";
 
 interface Props {
-    data: {
-        slides: Array<{
-            image: string;
-            title: string;
-            subtitle?: string;
-            showButton?: boolean;
-            buttonText?: string;
-            buttonLink?: string;
-            textColor?: string;
-        }>;
-        fullscreen?: boolean;
-        autoplay?: boolean;
-        delay?: number;
-    };
+    slides: Array<{
+        title: string;
+        description: string;
+        image: string;
+        buttonText?: string;
+        buttonLink?: string;
+    }>;
+    autoplay?: boolean;
+    autoplayDelay?: number;
 }
 
-const { data } = Astro.props;
+const { slides, autoplay = true, autoplayDelay = 5000 } = Astro.props;
 ---
 
-<HeroCarouselReact
-    slides={data.slides}
-    fullscreen={data.fullscreen}
-    autoplay={data.autoplay}
-    delay={data.delay}
-    client:load
+<HeroCarouselClient
+    slides={slides}
+    autoplay={autoplay}
+    autoplayDelay={autoplayDelay}
+    client:visible
 />
