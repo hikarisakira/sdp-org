@@ -1,6 +1,5 @@
 ---
 // src/layouts/Layout.astro
-import FullscreenNav from "../components/menu/FullscreenNav";
 import config from "../content/config/config.json";
 
 const navLinks = [
@@ -26,17 +25,6 @@ const socialLinks = [
         <title>{config.seo.title}</title>
     </head>
     <body>
-        <!-- 全螢幕選單 (React 島嶼) -->
-        <FullscreenNav
-            client:load
-            links={navLinks}
-            logo={config.seo.title}
-            socialLinks={socialLinks}
-        />
-
-        <!-- 原有的 Header (保留用於 SEO 或備用) -->
-        <!-- 可以選擇隱藏或移除 -->
-
         <main>
             <slot />
         </main>
