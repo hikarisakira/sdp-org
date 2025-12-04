@@ -13,6 +13,7 @@
     "@astrojs/react": "4.4.2",
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/svelte": "^7.2.2",
     "@tailwindcss/vite": "^4.1.17",
     "@tanstack/react-virtual": "^3.13.12",
     "astro": "^5.16.3",
@@ -21,8 +22,10 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.5.0",
+    "svelte": "^5.45.5",
     "tailwindcss": "^4.1.17",
-    "tinacms": "^2.9.0"
+    "tinacms": "^2.9.0",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@tinacms/cli": "^1.11.0",
