@@ -1,0 +1,30 @@
+---
+import HeroCarouselReact from "./HeroCarousel";
+
+interface Props {
+    data: {
+        slides: Array<{
+            image: string;
+            title: string;
+            subtitle?: string;
+            showButton?: boolean;
+            buttonText?: string;
+            buttonLink?: string;
+            textColor?: string;
+        }>;
+        fullscreen?: boolean;
+        autoplay?: boolean;
+        delay?: number;
+    };
+}
+
+const { data } = Astro.props;
+---
+
+<HeroCarouselReact
+    slides={data.slides}
+    fullscreen={data.fullscreen}
+    autoplay={data.autoplay}
+    delay={data.delay}
+    client:load
+/>
