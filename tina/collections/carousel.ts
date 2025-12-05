@@ -9,23 +9,23 @@ export const CarouselCollection: Collection = {
     {
       type: "string",
       name: "title",
-      label: "Page Title",
+      label: "頁面主旨",
       required: true,
     },
     {
       type: "object",
       name: "blocks",
-      label: "Page Blocks",
+      label: "區塊(沒有意外的話這個分類只有這一個區塊)",
       list: true,
       templates: [
         {
           name: "heroCarousel",
-          label: "Hero Carousel",
+          label: "首頁輪播區塊",
           fields: [
             {
               type: "boolean",
               name: "fullscreen",
-              label: "Full Screen",
+              label: "全螢幕(如果沒有什麼需要的話不要碰這個按鈕)",
               description: "Make carousel fill entire viewport",
               ui: {
                 defaultValue: true,
@@ -34,7 +34,7 @@ export const CarouselCollection: Collection = {
             {
               type: "boolean",
               name: "autoplay",
-              label: "Auto Play",
+              label: "自動輪播",
               ui: {
                 defaultValue: true,
               },
@@ -42,7 +42,7 @@ export const CarouselCollection: Collection = {
             {
               type: "number",
               name: "delay",
-              label: "Autoplay Delay (ms)",
+              label: "延遲時間(單位為ms)",
               ui: {
                 defaultValue: 5000,
               },
@@ -50,7 +50,7 @@ export const CarouselCollection: Collection = {
             {
               type: "object",
               name: "slides",
-              label: "Slides",
+              label: "輪播內容",
               list: true,
               ui: {
                 itemProps: (item) => ({
@@ -67,13 +67,13 @@ export const CarouselCollection: Collection = {
                 {
                   type: "string",
                   name: "title",
-                  label: "Title",
+                  label: "主旨",
                   required: true,
                 },
                 {
                   type: "string",
                   name: "subtitle",
-                  label: "Subtitle",
+                  label: "簡述(不建議打太長，長話短說就好)",
                   ui: {
                     component: "textarea",
                   },
@@ -81,7 +81,7 @@ export const CarouselCollection: Collection = {
                 {
                   type: "boolean",
                   name: "showButton",
-                  label: "Show Button",
+                  label: "要有按鈕嗎？(若無下面按鈕內文字可留空)",
                   ui: {
                     defaultValue: false,
                   },
@@ -89,17 +89,17 @@ export const CarouselCollection: Collection = {
                 {
                   type: "string",
                   name: "buttonText",
-                  label: "Button Text",
+                  label: "按鈕內文字",
                 },
                 {
                   type: "string",
                   name: "buttonLink",
-                  label: "Button Link",
+                  label: "按鈕連結(URL)",
                 },
                 {
                   type: "string",
                   name: "textColor",
-                  label: "Text Color",
+                  label: "文字顏色",
                   ui: {
                     component: "color",
                     defaultValue: "#ffffff",

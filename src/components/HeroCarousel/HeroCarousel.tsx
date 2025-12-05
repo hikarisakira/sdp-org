@@ -41,7 +41,7 @@ export default function HeroCarousel({
   const currentSlide = slides[activeIndex] || slides[0];
 
   return (
-    <section className="hero min-h-[600px] lg:h-[700px] bg-gradient-to-br from-base-100 to-base-200">
+    <section className="hero min-h-[600px] lg:h-[700px] bg-linear-to-br from-base-100 to-base-200">
       <div className="hero-content w-full max-w-7xl px-4 lg:px-8 py-8 lg:py-0">
         {/* Grid 容器 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full items-center">
