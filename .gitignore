@@ -148,3 +148,6 @@ yarn.lock
 bun.lockb
 deno.lock
 
+# FUCK OFF MACOS
+.DS_Store
+**/.DS_Store
