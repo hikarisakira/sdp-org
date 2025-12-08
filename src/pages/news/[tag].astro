@@ -1,13 +1,12 @@
 ---
-import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-import config from "../../content/config/config.json";
-import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
+import config from "../../content/config/config.json";
 
-const TAG_LABELS: Record<string, string> = {
+const tagMap: Record<string, string> = {
     press: "新聞稿",
     events: "活動資訊",
     issues: "議題發言",
@@ -15,23 +14,38 @@ const TAG_LABELS: Record<string, string> = {
 };
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
     const tags = ["press", "events", "issues", "clarification"];
 
     return tags.map((tag) => ({
         params: { tag },
-        props: { tag },
     }));
 }
 
-const { tag } = Astro.props as { tag: string };
+const tag = Astro.params.tag as string;
+const allPosts = await getCollection("news"); // 改為 'news'
 
-const allPosts = await getCollection("blog");
+console.log("=== 偵錯資訊 ===");
+console.log("當前 tag:", tag);
+console.log("所有文章數量:", allPosts.length);
+allPosts.forEach((post) => {
+    console.log(`文章: ${post.id}, tags:`, post.data.tags);
+});
+
 const filteredPosts = allPosts
-    .filter((post) => post.data.tags?.includes(tag))
+    .filter((post) => {
+        if (!post.data.tags || !Array.isArray(post.data.tags)) {
+            return false;
+        }
+        const hasTag = post.data.tags.includes(tag);
+        console.log(`${post.id} 包含 "${tag}"?`, hasTag);
+        return hasTag;
+    })
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const pageTitle = TAG_LABELS[tag] || tag;
+console.log("篩選後的文章數量:", filteredPosts.length);
+console.log("=== 偵錯資訊結束 ===");
+
+const pageTitle: string = tagMap[tag] || tag;
 ---
 
 <!doctype html>
@@ -47,17 +61,56 @@ const pageTitle = TAG_LABELS[tag] || tag;
         <main class="container mx-auto px-4 py-8">
             <h1 class="text-4xl font-bold mb-8">{pageTitle}</h1>
 
+            {
+                import.meta.env.DEV && (
+                    <div class="alert alert-info mb-4">
+                        <div>
+                            <p>🔍 偵錯資訊</p>
+                            <p>當前標籤: {tag}</p>
+                            <p>找到文章數: {filteredPosts.length}</p>
+                            <p>總文章數: {allPosts.length}</p>
+                        </div>
+                    </div>
+                )
+            }
+
+            <div class="tabs tabs-boxed mb-8">
+                <a href="/news" class="tab">全部</a>
+                <a
+                    href="/news/press"
+                    class={`tab ${tag === "press" ? "tab-active" : ""}`}
+                    >新聞稿</a
+                >
+                <a
+                    href="/news/events"
+                    class={`tab ${tag === "events" ? "tab-active" : ""}`}
+                    >活動資訊</a
+                >
+                <a
+                    href="/news/issues"
+                    class={`tab ${tag === "issues" ? "tab-active" : ""}`}
+                    >議題發言</a
+                >
+                <a
+                    href="/news/clarification"
+                    class={`tab ${tag === "clarification" ? "tab-active" : ""}`}
+                    >闢謠專區</a
+                >
+            </div>
+
             <div class="grid gap-6">
                 {
                     filteredPosts.length === 0 ? (
-                        <p class="text-gray-500">目前沒有文章</p>
+                        <div class="alert alert-warning">
+                            <span>目前沒有「{pageTitle}」分類的文章</span>
+                        </div>
                     ) : (
                         filteredPosts.map((post) => (
                             <article class="card bg-base-100 shadow-xl">
                                 <div class="card-body">
                                     <h2 class="card-title">
                                         <a
-                                            href={`/blog/${post.id}`}
+                                            href={`/news/${post.id}`}
                                             class="hover:text-primary"
                                         >
                                             {post.data.title}
@@ -73,9 +126,22 @@ const pageTitle = TAG_LABELS[tag] || tag;
                                             {post.data.description}
                                         </p>
                                     )}
-                                    <div class="card-actions justify-end">
+                                    {post.data.tags &&
+                                        post.data.tags.length > 0 && (
+                                            <div class="flex gap-2 flex-wrap mt-2">
+                                                {post.data.tags.map(
+                                                    (postTag: string) => (
+                                                        <span class="badge badge-primary badge-sm">
+                                                            {tagMap[postTag] ||
+                                                                postTag}
+                                                        </span>
+                                                    ),
+                                                )}
+                                            </div>
+                                        )}
+                                    <div class="card-actions justify-end mt-4">
                                         <a
-                                            href={`/blog/${post.id}`}
+                                            href={`/news/${post.id}`}
                                             class="btn btn-primary btn-sm"
                                         >
                                             閱讀更多

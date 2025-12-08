@@ -6,13 +6,11 @@ import Footer from "../../components/Footer.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import config from "../../content/config/config.json";
 
-// 取得所有文章
-const allPosts = await getCollection("blog");
+const allPosts = await getCollection("news"); // 改為 'news'
 const sortedPosts = allPosts.sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-// 統計各分類文章數量
 const tagCounts = {
     press: 0,
     events: 0,
@@ -42,7 +40,6 @@ allPosts.forEach((post) => {
         <main class="container mx-auto px-4 py-8">
             <h1 class="text-4xl font-bold mb-8">最新消息</h1>
 
-            <!-- 分類導航 -->
             <div class="tabs tabs-boxed mb-8">
                 <a href="/news" class="tab tab-active">全部</a>
                 <a href="/news/press" class="tab">新聞稿 ({tagCounts.press})</a>
@@ -57,7 +54,6 @@ allPosts.forEach((post) => {
                 >
             </div>
 
-            <!-- 文章列表 -->
             <div class="grid gap-6">
                 {
                     sortedPosts.map((post) => (
@@ -65,7 +61,7 @@ allPosts.forEach((post) => {
                             <div class="card-body">
                                 <h2 class="card-title">
                                     <a
-                                        href={`/blog/${post.id}`}
+                                        href={`/news/${post.id}`}
                                         class="hover:text-primary"
                                     >
                                         {post.data.title}
@@ -79,9 +75,12 @@ allPosts.forEach((post) => {
                                         <div class="flex gap-2 flex-wrap">
                                             {post.data.tags.map(
                                                 (tag: string) => (
-                                                    <span class="badge badge-primary badge-sm">
+                                                    <a
+                                                        href={`/news/${tag}`}
+                                                        class="badge badge-primary badge-sm hover:badge-secondary"
+                                                    >
                                                         {tag}
-                                                    </span>
+                                                    </a>
                                                 ),
                                             )}
                                         </div>
@@ -93,7 +92,7 @@ allPosts.forEach((post) => {
                                 )}
                                 <div class="card-actions justify-end">
                                     <a
-                                        href={`/blog/${post.id}`}
+                                        href={`/news/${post.id}`}
                                         class="btn btn-primary btn-sm"
                                     >
                                         閱讀更多

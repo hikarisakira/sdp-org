@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+import { Content as MDXContent } from "astro:content";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("news");
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+// ⭐ TinaCMS loader 的文章已經包含 body 內容
+const body = post.body;
+---
+
+<BlogPost {...post.data}>
+    <Fragment set:html={body} />
+</BlogPost>

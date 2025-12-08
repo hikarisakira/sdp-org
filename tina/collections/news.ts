@@ -1,13 +1,13 @@
 import type { Collection } from "tinacms";
 
-export const BlogCollection: Collection = {
-  name: "blog",
-  label: "Blogs",
-  path: "src/content/blog",
+export const NewsCollection: Collection = {
+  name: "news",
+  label: "最新消息",
+  path: "src/content/news",
   format: "mdx",
   ui: {
     router({ document }) {
-      return `/blog/${document._sys.filename}`;
+      return `/news/${document._sys.filename}`;
     },
   },
   fields: [
