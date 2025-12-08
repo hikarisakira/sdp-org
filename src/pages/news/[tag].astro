@@ -1,0 +1,93 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import config from "../../content/config/config.json";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+
+const TAG_LABELS: Record<string, string> = {
+    press: "新聞稿",
+    events: "活動資訊",
+    issues: "議題發言",
+    clarification: "闢謠專區",
+};
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    const tags = ["press", "events", "issues", "clarification"];
+
+    return tags.map((tag) => ({
+        params: { tag },
+        props: { tag },
+    }));
+}
+
+const { tag } = Astro.props as { tag: string };
+
+const allPosts = await getCollection("blog");
+const filteredPosts = allPosts
+    .filter((post) => post.data.tags?.includes(tag))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const pageTitle = TAG_LABELS[tag] || tag;
+---
+
+<!doctype html>
+<html lang="zh-TW">
+    <head>
+        <BaseHead
+            title={`${pageTitle} - ${config.seo.title}`}
+            description={config.seo.description}
+        />
+    </head>
+    <body>
+        <Header />
+        <main class="container mx-auto px-4 py-8">
+            <h1 class="text-4xl font-bold mb-8">{pageTitle}</h1>
+
+            <div class="grid gap-6">
+                {
+                    filteredPosts.length === 0 ? (
+                        <p class="text-gray-500">目前沒有文章</p>
+                    ) : (
+                        filteredPosts.map((post) => (
+                            <article class="card bg-base-100 shadow-xl">
+                                <div class="card-body">
+                                    <h2 class="card-title">
+                                        <a
+                                            href={`/blog/${post.id}`}
+                                            class="hover:text-primary"
+                                        >
+                                            {post.data.title}
+                                        </a>
+                                    </h2>
+                                    <p class="text-sm text-gray-500">
+                                        <FormattedDate
+                                            date={post.data.pubDate}
+                                        />
+                                    </p>
+                                    {post.data.description && (
+                                        <p class="text-gray-700">
+                                            {post.data.description}
+                                        </p>
+                                    )}
+                                    <div class="card-actions justify-end">
+                                        <a
+                                            href={`/blog/${post.id}`}
+                                            class="btn btn-primary btn-sm"
+                                        >
+                                            閱讀更多
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        ))
+                    )
+                }
+            </div>
+        </main>
+        <Footer />
+    </body>
+</html>
