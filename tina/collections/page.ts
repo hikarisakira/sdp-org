@@ -2,7 +2,7 @@ import type { Collection } from "tinacms";
 
 export const PageCollection: Collection = {
   name: "page",
-  label: "Pages",
+  label: "頁面",
   path: "src/content/page",
   format: "mdx",
   ui: {
@@ -14,13 +14,13 @@ export const PageCollection: Collection = {
     {
       name: "seoTitle",
       type: "string",
-      required: true
+      required: true,
     },
     {
       name: "body",
       type: "rich-text",
       isBody: true,
-      required: true
-    }
-  ]
-}
+      required: true,
+    },
+  ],
+};

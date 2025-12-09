@@ -6,10 +6,12 @@ import Footer from "../../components/Footer.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import config from "../../content/config/config.json";
 
-const allPosts = await getCollection("news"); // 改為 'news'
-const sortedPosts = allPosts.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const allPosts = await getCollection("news");
+const sortedPosts = allPosts.sort((a, b) => {
+    const dateA = a.data.pubDate ? new Date(a.data.pubDate).valueOf() : 0;
+    const dateB = b.data.pubDate ? new Date(b.data.pubDate).valueOf() : 0;
+    return dateB - dateA;
+});
 
 const tagCounts = {
     press: 0,
@@ -40,16 +42,19 @@ allPosts.forEach((post) => {
         <main class="container mx-auto px-4 py-8">
             <h1 class="text-4xl font-bold mb-8">最新消息</h1>
 
+            <!-- ⭐ 更新：tag 路由現在是 /news/tag/xxx -->
             <div class="tabs tabs-boxed mb-8">
                 <a href="/news" class="tab tab-active">全部</a>
-                <a href="/news/press" class="tab">新聞稿 ({tagCounts.press})</a>
-                <a href="/news/events" class="tab"
+                <a href="/news/tag/press" class="tab"
+                    >新聞稿 ({tagCounts.press})</a
+                >
+                <a href="/news/tag/events" class="tab"
                     >活動資訊 ({tagCounts.events})</a
                 >
-                <a href="/news/issues" class="tab"
+                <a href="/news/tag/issues" class="tab"
                     >議題發言 ({tagCounts.issues})</a
                 >
-                <a href="/news/clarification" class="tab"
+                <a href="/news/tag/clarification" class="tab"
                     >闢謠專區 ({tagCounts.clarification})</a
                 >
             </div>
@@ -64,19 +69,23 @@ allPosts.forEach((post) => {
                                         href={`/news/${post.id}`}
                                         class="hover:text-primary"
                                     >
-                                        {post.data.title}
+                                        {post.data.title || "無標題"}
                                     </a>
                                 </h2>
-                                <p class="text-sm text-gray-500">
-                                    <FormattedDate date={post.data.pubDate} />
-                                </p>
+                                {post.data.pubDate && (
+                                    <p class="text-sm text-gray-500">
+                                        <FormattedDate
+                                            date={post.data.pubDate}
+                                        />
+                                    </p>
+                                )}
                                 {post.data.tags &&
                                     post.data.tags.length > 0 && (
                                         <div class="flex gap-2 flex-wrap">
                                             {post.data.tags.map(
                                                 (tag: string) => (
                                                     <a
-                                                        href={`/news/${tag}`}
+                                                        href={`/news/tag/${tag}`}
                                                         class="badge badge-primary badge-sm hover:badge-secondary"
                                                     >
                                                         {tag}

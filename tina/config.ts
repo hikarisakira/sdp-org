@@ -8,7 +8,8 @@ const branch =
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
-  "main";
+  "main" ||
+  "remake-tinacms";
 
 export default defineConfig({
   branch,

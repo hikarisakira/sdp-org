@@ -22,28 +22,24 @@ export async function getStaticPaths() {
 }
 
 const tag = Astro.params.tag as string;
-const allPosts = await getCollection("news"); // 改為 'news'
-
-console.log("=== 偵錯資訊 ===");
-console.log("當前 tag:", tag);
-console.log("所有文章數量:", allPosts.length);
-allPosts.forEach((post) => {
-    console.log(`文章: ${post.id}, tags:`, post.data.tags);
-});
+const allPosts = await getCollection("news");
 
 const filteredPosts = allPosts
     .filter((post) => {
-        if (!post.data.tags || !Array.isArray(post.data.tags)) {
+        if (
+            !post.data.tags ||
+            !Array.isArray(post.data.tags) ||
+            post.data.tags.length === 0
+        ) {
             return false;
         }
-        const hasTag = post.data.tags.includes(tag);
-        console.log(`${post.id} 包含 "${tag}"?`, hasTag);
-        return hasTag;
+        return post.data.tags.includes(tag);
     })
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-console.log("篩選後的文章數量:", filteredPosts.length);
-console.log("=== 偵錯資訊結束 ===");
+    .sort((a, b) => {
+        const dateA = a.data.pubDate ? new Date(a.data.pubDate).valueOf() : 0;
+        const dateB = b.data.pubDate ? new Date(b.data.pubDate).valueOf() : 0;
+        return dateB - dateA;
+    });
 
 const pageTitle: string = tagMap[tag] || tag;
 ---
@@ -74,25 +70,26 @@ const pageTitle: string = tagMap[tag] || tag;
                 )
             }
 
+            <!-- ⭐ 更新：tag 路由現在是 /news/tag/xxx -->
             <div class="tabs tabs-boxed mb-8">
                 <a href="/news" class="tab">全部</a>
                 <a
-                    href="/news/press"
+                    href="/news/tag/press"
                     class={`tab ${tag === "press" ? "tab-active" : ""}`}
                     >新聞稿</a
                 >
                 <a
-                    href="/news/events"
+                    href="/news/tag/events"
                     class={`tab ${tag === "events" ? "tab-active" : ""}`}
                     >活動資訊</a
                 >
                 <a
-                    href="/news/issues"
+                    href="/news/tag/issues"
                     class={`tab ${tag === "issues" ? "tab-active" : ""}`}
                     >議題發言</a
                 >
                 <a
-                    href="/news/clarification"
+                    href="/news/tag/clarification"
                     class={`tab ${tag === "clarification" ? "tab-active" : ""}`}
                     >闢謠專區</a
                 >
@@ -113,14 +110,16 @@ const pageTitle: string = tagMap[tag] || tag;
                                             href={`/news/${post.id}`}
                                             class="hover:text-primary"
                                         >
-                                            {post.data.title}
+                                            {post.data.title || "無標題"}
                                         </a>
                                     </h2>
-                                    <p class="text-sm text-gray-500">
-                                        <FormattedDate
-                                            date={post.data.pubDate}
-                                        />
-                                    </p>
+                                    {post.data.pubDate && (
+                                        <p class="text-sm text-gray-500">
+                                            <FormattedDate
+                                                date={post.data.pubDate}
+                                            />
+                                        </p>
+                                    )}
                                     {post.data.description && (
                                         <p class="text-gray-700">
                                             {post.data.description}

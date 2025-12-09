@@ -1,17 +1,27 @@
 ---
 interface Props {
-    date: Date;
+    date: Date | string | undefined | null;
 }
 
 const { date } = Astro.props;
+
+// 處理 undefined 或 null 的情況
+let formattedDate = "未設定日期";
+
+if (date) {
+    try {
+        const dateObj = typeof date === "string" ? new Date(date) : date;
+        if (dateObj && !isNaN(dateObj.getTime())) {
+            formattedDate = dateObj.toLocaleDateString("zh-TW", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            });
+        }
+    } catch (error) {
+        console.error("Date formatting error:", error);
+    }
+}
 ---
 
-<time datetime={date.toISOString()}>
-    {
-        date.toLocaleDateString("zh-tw", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-        })
-    }
-</time>
+<time datetime={date?.toISOString?.() || ""}>{formattedDate}</time>
