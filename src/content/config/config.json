@@ -1,107 +1,38 @@
 {
   "seo": {
     "title": "社會民主黨",
-    "description": "台灣社會民主黨官方網站",
-    "siteOwner": "社會民主黨"
+    "description": "Welcome to my website!",
+    "siteOwner": "Your name here"
   },
   "nav": [
     {
-      "type": "submenu",
-      "id": "news",
-      "label": "最新消息",
-      "secondary": false,
-      "submenu": [
-        {
-          "label": "新聞稿",
-          "href": "/news/press"
-        },
-        {
-          "label": "活動資訊",
-          "href": "/news/events"
-        },
-        {
-          "label": "議題發言",
-          "href": "/news/issues"
-        },
-        {
-          "label": "闢謠專區",
-          "href": "/news/clarification"
-        }
-      ]
+      "title": "Home",
+      "link": "/"
     },
     {
-      "type": "submenu",
-      "id": "about",
-      "label": "關於社民黨",
-      "submenu": [
-        {
-          "label": "簡介",
-          "href": "/about"
-        },
-        {
-          "label": "組織團隊",
-          "href": "/about/team"
-        },
-        {
-          "label": "黨公職",
-          "href": "/about/officials"
-        },
-        {
-          "label": "黨務文件",
-          "href": "/about/documents"
-        },
-        {
-          "label": "財報公開專區",
-          "href": "/about/finance"
-        }
-      ]
+      "title": "News",
+      "link": "/news"
     },
     {
-      "type": "submenu",
-      "id": "join",
-      "label": "加入我們",
-      "href": "/join",
-      "secondary": true,
-      "submenu": [
-        {
-          "label": "成為黨員",
-          "href": "https://sdpartytw.pse.is/6mhjv3"
-        },
-        {
-          "label": "加入志工",
-          "href": "https://sdpartytw.pse.is/76ypf3"
-        }
-      ]
-    },
-    {
-      "type": "link",
-      "id": "donate",
-      "label": "捐款支持",
-      "href": "https://sdparty.oen.tw/#",
-      "secondary": true
+      "title": "About",
+      "link": "/about"
     }
   ],
-  "socialLinks": [
+  "contactLinks": [
     {
-      "name": "Facebook",
-      "url": "https://www.facebook.com/sdparty.tw"
+      "title": "Twitter",
+      "link": "https://x.com/tinacms",
+      "icon": "TbBrandTwitter"
     },
     {
-      "name": "Instagram",
-      "url": "https://www.instagram.com/sdparty.tw/"
+      "title": "Docs",
+      "link": "https://tina.io/docs",
+      "icon": "TbBook2"
     },
     {
-      "name": "Threads",
-      "url": "https://www.threads.net/sdparty.tw"
-    },
-    {
-      "name": "YouTube",
-      "url": "https://www.youtube.com/@sdpartytw"
-    },
-    {
-      "name": "Line@",
-      "url": "https://twitter.com/sdparty_tw"
+      "title": "GitHub",
+      "link": "https://github.com/tinacms/tinacms",
+      "icon": "TbBrandGithub"
     }
-  ],
-  "contactLinks": []
+  ]
 }

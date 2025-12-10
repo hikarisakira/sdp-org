@@ -1,23 +1,56 @@
 ---
+import IconLink from "./react/IconLink";
 import "../styles/logo.css";
-import { navigate } from "astro:transitions/client";
 
 let config;
 try {
     config = (await import("../content/config/config.json")).default;
 } catch (e) {
-    console.error("無法載入配置:", e);
-    config = {
-        seo: { title: "社會民主黨" },
-        nav: [],
-        socialLinks: [],
-    };
+    config = { seo: { title: "社會民主黨" } };
 }
 
 // 定義多層級選單結構
-const menuStructure = config.nav || [];
+const menuStructure = [
+    {
+        type: "submenu",
+        label: "最新消息",
+        id: "news",
+        submenu: [
+            { label: "新聞稿", href: "/news/press" },
+            { label: "活動資訊", href: "/news/events" },
+            { label: "議題發言", href: "/news/issues" },
+            { label: "闢謠專區", href: "/news/clarification" },
+        ],
+    },
+    {
+        type: "submenu",
+        label: "關於社民黨",
+        id: "about",
+        submenu: [
+            { label: "簡介", href: "/about" },
+            { label: "組織團隊", href: "/about/team" },
+            { label: "黨公職", href: "/about/officials" },
+            { label: "黨務文件", href: "/about/documents" },
+            { label: "財報公開專區", href: "/about/finance" },
+        ],
+    },
+    { type: "link", label: "Portfolio", href: "/portfolio" },
+    { type: "link", label: "加入我們", href: "/join", secondary: true },
+    {
+        type: "link",
+        label: "捐款支持",
+        href: "https://sdparty.oen.tw/#",
+        secondary: true,
+    },
+];
 
-const socialLinks = config.socialLinks || [];
+const socialLinks = [
+    { name: "Facebook", url: "https://www.facebook.com/sdparty.tw" },
+    { name: "Instagram", url: "https://www.instagram.com/sdparty.tw/" },
+    { name: "Threads", url: "https://www.threads.net/sdparty.tw" },
+    { name: "YouTube", url: "https://www.youtube.com/@sdpartytw" },
+    { name: "Line@", url: "https://twitter.com/sdparty_tw" },
+];
 ---
 
 <nav class="navbar bg-base-100 shadow-sm fixed top-0 w-full z-50">
