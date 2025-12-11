@@ -1,7 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import client from "../tina/__generated__/client";
 
-const blog = defineCollection({
+const news = defineCollection({
   loader: async () => {
     const postsResponse = await client.queries.newsConnection();
 
@@ -61,4 +61,4 @@ const page = defineCollection({
     body: z.any(),
   }),
 });
-export const collections = { blog, page };
+export const collections = { news, page };
