@@ -7,25 +7,25 @@
   "nav": [
     {
       "type": "submenu",
-      "id": "news",
+      "id": "category",
       "label": "最新消息",
       "secondary": false,
       "submenu": [
         {
           "label": "新聞稿",
-          "href": "/news/press"
+          "href": "/catetory/press"
         },
         {
           "label": "活動資訊",
-          "href": "/news/events"
+          "href": "/category/events"
         },
         {
           "label": "議題發言",
-          "href": "/news/issues"
+          "href": "/category/issues"
         },
         {
           "label": "闢謠專區",
-          "href": "/news/clarification"
+          "href": "/category/clarification"
         }
       ]
     },

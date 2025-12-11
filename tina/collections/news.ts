@@ -1,4 +1,5 @@
 import type { Collection } from "tinacms";
+import { CATEGORIES } from "@/data/categories";
 
 export const NewsCollection: Collection = {
   name: "news",
@@ -37,6 +38,14 @@ export const NewsCollection: Collection = {
       name: "heroImage",
       label: "標題圖片",
       type: "image",
+    },
+    {
+      type: "string",
+      required: true,
+      name: "category",
+      label: "文章分類",
+      description: "選擇此文章所屬的分類 *重要，必須選取*",
+      options: [...CATEGORIES],
     },
     {
       name: "tags",

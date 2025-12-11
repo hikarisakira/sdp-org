@@ -1,137 +1,33 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import type { MarkdownHeading } from "astro";
 
-// 接受完整的 post 物件或個別屬性
-const post = Astro.props.post || Astro.props;
-const { title, description, pubDate, updatedDate, heroImage, tags } = post;
-
-const tagMap: Record<string, string> = {
-    press: "新聞稿",
-    events: "活動資訊",
-    issues: "議題發言",
-    clarification: "闢謠專區",
+type Props = {
+    data: CollectionEntry<"news">["data"];
+    headings: MarkdownHeading[];
+    readtime: string;
 };
+
+const { data, readtime, headings } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags } = data;
+
+const articleDate = pubDate.toISOString();
 ---
 
 <!doctype html>
 <html lang="zh-TW">
-    <head>
-        <BaseHead title={title} description={description} />
-    </head>
-    <body>
-        <Header />
-        <main class="container mx-auto px-4 py-8 max-w-4xl">
-            <!-- 麵包屑導航 -->
-            <div class="text-sm breadcrumbs mb-6">
-                <ul>
-                    <li><a href="/">首頁</a></li>
-                    <li><a href="/news">最新消息</a></li>
-                    {
-                        tags && tags.length > 0 && (
-                            <li>
-                                <a href={`/news/tag/${tags[0]}`}>
-                                    {tagMap[tags[0]] || tags[0]}
-                                </a>
-                            </li>
-                        )
-                    }
-                    <li>{title}</li>
-                </ul>
+    <Layout
+        title={title}
+        description={description}
+        image={heroImage?.src}
+        articleDate={articleDate}
+    >
+        <body>
+            <div>
+                <slot />
             </div>
-
-            <article>
-                <!-- 英雄圖片 -->
-                {
-                    heroImage && (
-                        <div class="mb-8">
-                            <img
-                                src={heroImage}
-                                alt={title}
-                                class="w-full h-auto rounded-lg shadow-xl"
-                            />
-                        </div>
-                    )
-                }
-
-                <!-- 標題和元數據 -->
-                <header class="mb-8">
-                    <h1 class="text-4xl font-bold mb-4">{title}</h1>
-
-                    <!-- 標籤 -->
-                    {
-                        tags && tags.length > 0 && (
-                            <div class="flex gap-2 mb-4">
-                                {tags.map((tag: string) => (
-                                    <a
-                                        href={`/news/tag/${tag}`}
-                                        class="badge badge-primary badge-lg hover:badge-secondary"
-                                    >
-                                        {tagMap[tag] || tag}
-                                    </a>
-                                ))}
-                            </div>
-                        )
-                    }
-
-                    <!-- 日期 -->
-                    <div class="text-base-content/60 flex gap-4 text-sm">
-                        <div>
-                            發布日期: <FormattedDate date={pubDate} />
-                        </div>
-                        {
-                            updatedDate && (
-                                <div>
-                                    更新日期:{" "}
-                                    <FormattedDate date={updatedDate} />
-                                </div>
-                            )
-                        }
-                    </div>
-                </header>
-
-                <!-- 文章內容 -->
-                <div
-                    class="prose lg:prose-lg max-w-none prose-headings:font-bold prose-a:text-primary prose-img:rounded-lg"
-                >
-                    <slot />
-                </div>
-
-                <!-- 返回按鈕 -->
-                <footer class="mt-12 pt-8 border-t border-base-300">
-                    <div class="flex gap-4 flex-wrap">
-                        <a href="/news" class="btn btn-outline">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5 mr-2"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                            </svg>
-                            返回所有文章
-                        </a>
-                        {
-                            tags && tags.length > 0 && (
-                                <a
-                                    href={`/news/tag/${tags[0]}`}
-                                    class="btn btn-primary"
-                                >
-                                    ← 返回 {tagMap[tags[0]] || tags[0]}
-                                </a>
-                            )
-                        }
-                    </div>
-                </footer>
-            </article>
-        </main>
-        <Footer />
-    </body>
+        </body>
+    </Layout>
 </html>
