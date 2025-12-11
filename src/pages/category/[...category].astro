@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@/layouts/Layout";
+import ListPosts from "@/components/Kits/ListPosts";
+import ListCategories from "@/components/Kits/ListCategories";
+import TitlePage from "@/components/Kits/TitlePage";
+import {
+    sluglify,
+    unsluglify,
+    getCategories,
+    filterPostsByCategory,
+} from "@/utils";
+
+const { category } = Astro.params;
+
+export async function getStaticPaths() {
+    const categories = await getCategories();
+
+    return categories.map((category) => ({
+        params: { category: sluglify(category.toLowerCase()) },
+        props: category,
+    }));
+}
+
+const unsluglifyNameCategory = unsluglify(category!.toLowerCase());
+const filterPosts = await filterPostsByCategory(unsluglifyNameCategory);
+---
+
+<BaseLayout title={category}>
+    <TitlePage title={unsluglifyNameCategory} />
+    <ListCategories activeCategory={category} />
+    <ListPosts posts={filterPosts} />
+</BaseLayout>

@@ -1,32 +1,30 @@
 ---
 // src/layouts/Layout.astro
-import config from "../content/config/config.json";
+import config from "@/content/config/config.json";
+import BaseHead from "@/components/BaseHead.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import SizeIndicator from "@/components/SizeIndicator.astro";
 
-const navLinks = [
-    { href: "/", label: "Homepage" },
-    { href: "/portfolio", label: "Portfolio" },
-    { href: "/about", label: "About" },
-    { href: "/join", label: "加入我們" },
-    { href: "/donate", label: "捐款支持" },
-];
-
-const socialLinks = [
-    { platform: "GitHub", url: "https://github.com/yourname" },
-    { platform: "Twitter", url: "https://twitter.com/yourname" },
-    { platform: "LinkedIn", url: "https://linkedin.com/in/yourname" },
-];
+const { title, description, image, articleDate } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="zh-TW" data-theme="light">
     <head>
+        <BaseHead title={title} description={description} ogImage={image} />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{config.seo.title}</title>
     </head>
     <body>
-        <main>
+        <main
+            class="px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-12 mt-4 overflow-hidden md:overflow-visible'"
+        >
+            <Header />
             <slot />
+            <Footer />
+            <SizeIndicator />
         </main>
     </body>
 </html>

@@ -2,7 +2,7 @@ import type { Collection } from "tinacms";
 
 export const CarouselCollection: Collection = {
   name: "carousel",
-  label: "Carousels",
+  label: "首頁輪播區塊",
   path: "src/content/carousel",
   format: "json",
   fields: [

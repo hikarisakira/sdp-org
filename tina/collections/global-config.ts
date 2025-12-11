@@ -3,7 +3,7 @@ import IconComponent from "../components/IconComponent";
 
 export const GlobalConfigCollection: Collection = {
   name: "config",
-  label: "Global Config",
+  label: "全局變量",
   path: "src/content/config",
   format: "json",
   ui: {

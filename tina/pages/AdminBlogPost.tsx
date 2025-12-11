@@ -1,50 +1,19 @@
-import React from 'react';
-import { tinaField, useTina } from "tinacms/dist/react";
-import type { BlogQuery, BlogQueryVariables } from '../__generated__/types';
-import { TinaMarkdown } from 'tinacms/dist/rich-text'
-import FormattedDate from '../../src/components/react/FormattedDate.tsx';
+import React from "react";
+import { useTina } from "tinacms/dist/react";
 
-
-type Props = {
-	variables: BlogQueryVariables;
-	data: BlogQuery;
-	query: string;
+interface AdminBlogPostProps {
+  children: React.ReactNode;
+  data: any;
+  query: string;
+  variables: {
+    relativePath: string;
+  };
 }
 
-export default function AdminBlogPost(props: Props) {
+export default function AdminBlogPost(props: AdminBlogPostProps) {
+  // useTina 會啟用編輯模式
+  const { data } = useTina(props);
 
-	const { data } = useTina({
-		query: props.query,
-		variables: props.variables,
-		data: props.data,
-	})
-
-	const blog = data.blog;
-
-	return (
-		<article>
-			<div data-tina-field={tinaField(blog, "heroImage")} className="hero-image">
-				{blog.heroImage && <img width={1020} height={510} src={blog.heroImage} alt="" />}
-			</div>
-			<div className="prose">
-				<div className="title">
-					<div className="date" data-tina-field={tinaField(blog, "pubDate")} >
-						<FormattedDate date={blog.pubDate} />
-						{
-							blog.updatedDate && (
-								<div className="last-updated-on" data-tina-field={tinaField(blog, "updatedDate")} >
-									Last updated on <FormattedDate date={blog.updatedDate} />
-								</div>
-							)
-						}
-					</div>
-					<h1 data-tina-field={tinaField(blog, "title")} >{blog.title}</h1>
-					<hr />
-				</div>
-				<div data-tina-field={tinaField(blog, "body")}>
-					<TinaMarkdown content={blog.body} />
-				</div>
-			</div>
-		</article>
-	);
+  // 直接渲染 children，TinaCMS 會自動注入編輯功能
+  return <>{props.children}</>;
 }
