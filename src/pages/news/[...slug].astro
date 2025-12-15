@@ -1,54 +1,30 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
-import client from "../../../tina/__generated__/client";
-import AdminBlogPost from "../../../tina/pages/AdminBlogPost";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("news");
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+    const posts = await getCollection("news");
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }));
 }
 
 const { post } = Astro.props;
 
+const pubDate =
+    post.pubDate instanceof Date ? post.pubDate : new Date(post.pubDate);
+
+const updatedDate = post.updatedDate
+    ? post.updatedDate instanceof Date
+        ? post.updatedDate
+        : new Date(post.updatedDate)
+    : undefined;
+
 // 渲染 MDX 內容
-const { Content } = await post.render();
-
-// ⭐ 修正：確保傳遞正確的 data 給 BlogPost
-const postData = post.data;
-
-// 嘗試獲取 TinaCMS props（僅用於編輯模式）
-let tinaProps = null;
-try {
-  // ⭐ 修正：不要重複加 .mdx，因為 TinaCMS 會自動添加
-  // 同時檢查 post.id 是否已經包含副檔名
-  const filename = post.id.endsWith('.mdx') ? post.id : `${post.id}.mdx`;
-
-  console.log('Attempting TinaCMS query for:', filename);
-
-  tinaProps = await client.queries.news({
-    relativePath: filename,
-  });
-
-  console.log('TinaCMS query successful');
-} catch (error) {
-  console.warn('TinaCMS not available (expected in production):', error.message);
-}
+const { Content } = await render(post);
 ---
 
-{tinaProps ? (
-  <!-- 開發模式：有 TinaCMS 編輯功能 -->
-  <AdminBlogPost client:only="react" {...tinaProps}>
-    <BlogPost {...postData}>
-      <Content />
-    </BlogPost>
-  </AdminBlogPost>
-) : (
-  <!-- 正常模式：無編輯功能 -->
-  <BlogPost {...postData}>
+<BlogPost post={post} updatedDate={updatedDate}>
     <Content />
-  </BlogPost>
-)}
+</BlogPost>

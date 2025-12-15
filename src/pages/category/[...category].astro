@@ -1,32 +1,84 @@
 ---
-import BaseLayout from "@/layouts/Layout";
-import ListPosts from "@/components/Kits/ListPosts.astro";
-import ListCategories from "@/components/Kits/ListCategories.astro";
-import TitlePage from "@/components/Kits/TitlePage.astro";
-import {
-    sluglify,
-    unsluglify,
-    getCategories,
-    filterPostsByCategory,
-} from "@/utils";
-
-const { category } = Astro.params;
+import { getCollection } from "astro:content";
+import { CATEGORIES } from "@/data/categories";
+import Layout from "@/layouts/Layout";
 
 export async function getStaticPaths() {
-    const categories = await getCategories();
+    const allPosts = await getCollection("news");
 
-    return categories.map((category) => ({
-        params: { category: sluglify(category.toLowerCase()) },
-        props: category,
-    }));
+    // 為每個分類生成靜態路徑
+    return CATEGORIES.map((category) => {
+        const filteredPosts = allPosts.filter(
+            (post) => post.data.category === category,
+        );
+
+        return {
+            params: { category },
+            props: {
+                category,
+                posts: filteredPosts,
+            },
+        };
+    });
 }
 
-const unsluglifyNameCategory = unsluglify(category!.toLowerCase());
-const filterPosts = await filterPostsByCategory(unsluglifyNameCategory);
+interface Props {
+    category: string;
+    posts: any[];
+}
+
+const { category, posts } = Astro.props;
+
+// 分類標籤映射（繁體中文）
+const categoryLabels: Record<string, string> = {
+    press: "新聞稿",
+    events: "活動資訊",
+    issues: "議題發言",
+    clarification: "闢謠專區",
+};
+
+const categoryLabel = categoryLabels[category] || category;
 ---
 
-<BaseLayout title={category}>
-    <TitlePage title={unsluglifyNameCategory} />
-    <ListCategories activeCategory={category} />
-    <ListPosts posts={filterPosts} />
-</BaseLayout>
+<Layout title={`${categoryLabel} | 最新消息`}>
+    <main>
+        <h1 class="text-4xl font-bold mb-8">{categoryLabel}</h1>
+
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {
+                posts.map((post) => (
+                    <article class="card bg-base-100 shadow-xl">
+                        {post.data.heroImage && (
+                            <figure>
+                                <img
+                                    src={post.data.heroImage}
+                                    alt={post.data.title}
+                                />
+                            </figure>
+                        )}
+                        <div class="card-body">
+                            <h2 class="card-title">{post.data.title}</h2>
+                            <p>{post.data.description}</p>
+                            <div class="card-actions justify-end">
+                                <a
+                                    href={`/news/${post.id}`}
+                                    class="btn btn-primary"
+                                >
+                                    閱讀更多
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+
+        {
+            posts.length === 0 && (
+                <div class="text-center py-12">
+                    <p class="text-xl text-gray-500">此分類目前沒有文章</p>
+                </div>
+            )
+        }
+    </main>
+</Layout>

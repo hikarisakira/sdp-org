@@ -8,7 +8,8 @@ export const NewsCollection: Collection = {
   format: "mdx",
   ui: {
     router({ document }) {
-      return `/news/${document._sys.filename}`;
+      const filename = document._sys.filename.replace(/\.mdx?$/, "");
+      return `/news/${filename}`;
     },
   },
   fields: [
@@ -27,11 +28,6 @@ export const NewsCollection: Collection = {
     {
       name: "pubDate",
       label: "發布日期",
-      type: "datetime",
-    },
-    {
-      name: "updatedDate",
-      label: "更新時間",
       type: "datetime",
     },
     {

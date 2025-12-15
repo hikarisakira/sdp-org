@@ -27,9 +27,13 @@ const news = defineCollection({
     }),
     title: z.string(),
     description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
+    pubDate: z.union([z.string().transform((str) => new Date(str)), z.date()]),
+    updatedDate: z
+      .union([z.string().transform((str) => new Date(str)), z.date()])
+      .optional(),
     heroImage: z.string().nullish(),
+    category: z.enum(["press", "events", "issues", "clarification"]),
+    tags: z.array(z.string()).optional(),
   }),
 });
 

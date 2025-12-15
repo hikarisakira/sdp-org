@@ -1,7 +1,6 @@
 export const CATEGORIES = [
-  "news",
-  "updates",
+  "press",
   "events",
-  "announcements",
-  "features",
+  "issues",
+  "clarification",
 ] as const;

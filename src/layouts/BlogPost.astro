@@ -1,33 +1,68 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
-import FormattedDate from "../components/FormattedDate.astro";
+import FormattedDate from "@/components/Kits/FormattedDate.astro";
 import type { MarkdownHeading } from "astro";
 
-type Props = {
-    data: CollectionEntry<"news">["data"];
-    headings: MarkdownHeading[];
-    readtime: string;
-};
-
-const { data, readtime, headings } = Astro.props;
-const { title, description, pubDate, updatedDate, heroImage, tags } = data;
-
-const articleDate = pubDate.toISOString();
+interface Props {
+    title: string;
+    description?: string;
+    pubDate: Date;
+    updatedDate?: Date;
+    heroImage?: string | null;
+    tags?: string[];
+    category?: string;
+}
+const { title, description, pubDate, updatedDate, heroImage, tags, category } =
+    Astro.props;
 ---
 
 <!doctype html>
 <html lang="zh-TW">
-    <Layout
-        title={title}
-        description={description}
-        image={heroImage?.src}
-        articleDate={articleDate}
-    >
-        <body>
-            <div>
-                <slot />
+    <Layout title={title} description={description}>
+        <article class="max-w-4xl mx-auto px-4 py-8">
+            {
+                heroImage && (
+                    <img
+                        src={heroImage}
+                        alt={title}
+                        class="w-full h-64 object-cover rounded-lg mb-8"
+                    />
+                )
+            }
+
+            <div class="prose lg:prose-xl mx-auto">
+                <h1 class="text-4xl font-bold mb-4">{title}</h1>
+
+                <div class="text-sm text-gray-500 mb-8">
+                    <FormattedDate date={pubDate} />
+                    {
+                        updatedDate && (
+                            <>
+                                {" • 更新於 "}
+                                <FormattedDate date={updatedDate} />
+                            </>
+                        )
+                    }
+                    {
+                        category && (
+                            <>
+                                {" • "}
+                                <a
+                                    href={`/category/${category}`}
+                                    class="link link-primary"
+                                >
+                                    {category}
+                                </a>
+                            </>
+                        )
+                    }
+                </div>
+
+                <div class="content">
+                    <slot />
+                </div>
             </div>
-        </body>
+        </article>
     </Layout>
 </html>
