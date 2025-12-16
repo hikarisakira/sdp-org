@@ -2,7 +2,6 @@
 import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 import FormattedDate from "@/components/Kits/FormattedDate.astro";
-import type { MarkdownHeading } from "astro";
 
 interface Props {
     title: string;
@@ -13,56 +12,51 @@ interface Props {
     tags?: string[];
     category?: string;
 }
-const { title, description, pubDate, updatedDate, heroImage, tags, category } =
-    Astro.props;
+
+const { title, description, pubDate, updatedDate, heroImage, tags, category } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="zh-TW">
-    <Layout title={title} description={description}>
-        <article class="max-w-4xl mx-auto px-4 py-8">
-            {
-                heroImage && (
-                    <img
-                        src={heroImage}
-                        alt={title}
-                        class="w-full h-64 object-cover rounded-lg mb-8"
-                    />
-                )
-            }
+<Layout title={title} description={description}>
+    <article class="max-w-4xl mx-auto px-4 py-8">
+        {
+            heroImage && (
+                <img
+                    src={heroImage}
+                    alt={title}
+                    class="w-full h-64 object-cover rounded-lg mb-8"
+                />
+            )
+        }
 
-            <div class="prose lg:prose-xl mx-auto">
-                <h1 class="text-4xl font-bold mb-4">{title}</h1>
+        <div class="prose lg:prose-xl mx-auto">
+            <h1 class="text-4xl font-bold mb-4">{title}</h1>
 
-                <div class="text-sm text-gray-500 mb-8">
-                    <FormattedDate date={pubDate} />
-                    {
-                        updatedDate && (
-                            <>
-                                {" • 更新於 "}
-                                <FormattedDate date={updatedDate} />
-                            </>
-                        )
-                    }
-                    {
-                        category && (
-                            <>
-                                {" • "}
-                                <a
-                                    href={`/category/${category}`}
-                                    class="link link-primary"
-                                >
-                                    {category}
-                                </a>
-                            </>
-                        )
-                    }
-                </div>
-
-                <div class="content">
-                    <slot />
-                </div>
+            <div class="text-sm text-gray-500 mb-8 flex gap-4 items-center flex-wrap">
+                <span class="flex items-center gap-2">
+                    📅 <FormattedDate date={pubDate} />
+                </span>
+                {
+                    updatedDate && (
+                        <span class="flex items-center gap-2">
+                            🔄 <FormattedDate date={updatedDate} />
+                        </span>
+                    )
+                }
+                {
+                    category && (
+                        <a
+                            href={`/category/${category}`}
+                            class="badge badge-primary"
+                        >
+                            #{category}
+                        </a>
+                    )
+                }
             </div>
-        </article>
-    </Layout>
-</html>
+
+            <div class="content">
+                <slot />
+            </div>
+        </div>
+    </article>
+</Layout>
