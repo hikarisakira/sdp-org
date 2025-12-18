@@ -15,16 +15,10 @@ const { post } = Astro.props;
 const pubDate =
     post.pubDate instanceof Date ? post.pubDate : new Date(post.pubDate);
 
-const updatedDate = post.updatedDate
-    ? post.updatedDate instanceof Date
-        ? post.updatedDate
-        : new Date(post.updatedDate)
-    : undefined;
-
 // 渲染 MDX 內容
 const { Content } = await render(post);
 ---
 
-<BlogPost post={post} updatedDate={updatedDate}>
+<BlogPost post={post}>
     <Content />
 </BlogPost>

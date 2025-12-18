@@ -4,7 +4,7 @@ import config from "@/content/config/config.json";
 import BaseHead from "@/components/BaseHead.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import SizeIndicator from "@/components/Kits/SizeIndicator.astro";
+//import SizeIndicator from "@/components/Kits/SizeIndicator.astro";
 
 const { title, description, image, articleDate } = Astro.props;
 ---
@@ -19,12 +19,12 @@ const { title, description, image, articleDate } = Astro.props;
     </head>
     <body>
         <main
-            class="px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-12 mt-4 overflow-hidden md:overflow-visible'"
+            class="px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-12 mt-4 overflow-hidden md:overflow-visible"
         >
             <Header />
             <slot />
             <Footer />
-            <SizeIndicator />
+            <!-- <SizeIndicator /> -->
         </main>
     </body>
 </html>

@@ -8,13 +8,11 @@ interface Props {
     title: string;
     description?: string;
     pubDate: Date;
-    updatedDate?: Date;
     heroImage?: string | null;
     tags?: string[];
     category?: string;
 }
-const { title, description, pubDate, updatedDate, heroImage, tags, category } =
-    Astro.props;
+const { title, description, pubDate, heroImage, tags, category } = Astro.props;
 ---
 
 <!doctype html>
@@ -35,15 +33,6 @@ const { title, description, pubDate, updatedDate, heroImage, tags, category } =
                 <h1 class="text-4xl font-bold mb-4">{title}</h1>
 
                 <div class="text-sm text-gray-500 mb-8">
-                    <FormattedDate date={pubDate} />
-                    {
-                        updatedDate && (
-                            <>
-                                {" • 更新於 "}
-                                <FormattedDate date={updatedDate} />
-                            </>
-                        )
-                    }
                     {
                         category && (
                             <>

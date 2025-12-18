@@ -41,44 +41,42 @@ const categoryLabel = categoryLabels[category] || category;
 ---
 
 <Layout title={`${categoryLabel} | 最新消息`}>
-    <main>
-        <h1 class="text-4xl font-bold mb-8">{categoryLabel}</h1>
+    <h1 class="text-4xl font-bold mb-8">{categoryLabel}</h1>
 
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {
-                posts.map((post) => (
-                    <article class="card bg-base-100 shadow-xl">
-                        {post.data.heroImage && (
-                            <figure>
-                                <img
-                                    src={post.data.heroImage}
-                                    alt={post.data.title}
-                                />
-                            </figure>
-                        )}
-                        <div class="card-body">
-                            <h2 class="card-title">{post.data.title}</h2>
-                            <p>{post.data.description}</p>
-                            <div class="card-actions justify-end">
-                                <a
-                                    href={`/news/${post.id}`}
-                                    class="btn btn-primary"
-                                >
-                                    閱讀更多
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                ))
-            }
-        </div>
-
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
-            posts.length === 0 && (
-                <div class="text-center py-12">
-                    <p class="text-xl text-gray-500">此分類目前沒有文章</p>
-                </div>
-            )
+            posts.map((post) => (
+                <article class="card bg-base-100 shadow-xl">
+                    {post.data.heroImage && (
+                        <figure>
+                            <img
+                                src={post.data.heroImage}
+                                alt={post.data.title}
+                            />
+                        </figure>
+                    )}
+                    <div class="card-body">
+                        <h2 class="card-title">{post.data.title}</h2>
+                        <p>{post.data.description}</p>
+                        <div class="card-actions justify-end">
+                            <a
+                                href={`/news/${post.id}`}
+                                class="btn btn-primary"
+                            >
+                                閱讀更多
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            ))
         }
-    </main>
+    </div>
+
+    {
+        posts.length === 0 && (
+            <div class="text-center py-12">
+                <p class="text-xl text-gray-500">此分類目前沒有文章</p>
+            </div>
+        )
+    }
 </Layout>
