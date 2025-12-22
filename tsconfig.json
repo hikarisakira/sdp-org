@@ -4,17 +4,16 @@
   "exclude": ["dist", "node_modules", "**/node_modules/*", ".vscode"],
   "compilerOptions": {
     "strictNullChecks": true,
-    "baseUrl": ".",
     "verbatimModuleSyntax": true,
     "paths": {
-      "@/components/*": ["src/components/*"],
-      "@/components/Kits/*": ["src/components/Kits/*"],
-      "@/layouts/*": ["src/layouts/*.astro"],
-      "@/utils": ["src/utils/index.ts"],
-      "@/data/*": ["src/data/*"],
-      "@/site-config": ["src/data/site.config.ts"],
-      "@/styles": ["src/styles/"],
-      "@/content/*": ["src/content/*"]
+      "@/components/*": ["./src/components/*"],
+      "@/components/Kits/*": ["./src/components/Kits/*"],
+      "@/layouts/*": ["./src/layouts/*.astro"],
+      "@/utils": ["./src/utils/index.ts"],
+      "@/data/*": ["./src/data/*"],
+      "@/site-config": ["./src/data/site.config.ts"],
+      "@/styles": ["./src/styles"],
+      "@/content/*": ["./src/content/*"]
     }
   }
 }
