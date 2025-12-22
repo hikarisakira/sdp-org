@@ -13,13 +13,22 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 
-const pubDate =
-    post.pubDate instanceof Date ? post.pubDate : new Date(post.pubDate);
+// 確保日期是 Date 物件
+const pubDate = post.data.pubDate instanceof Date 
+    ? post.data.pubDate 
+    : new Date(post.data.pubDate);
 
 // 渲染 MDX 內容
 const { Content } = await render(post);
 ---
 
-<BlogPost post={post}>
+<BlogPost
+    title={post.data.title}
+    description={post.data.description}
+    pubDate={pubDate}
+    heroImage={post.data.heroImage}
+    category={post.data.category}
+    tags={post.data.tags}
+>
     <Content />
 </BlogPost>
