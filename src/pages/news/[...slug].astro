@@ -1,25 +1,32 @@
 ---
 // src/pages/news/[...slug].astro
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
+import client from "../../../tina/__generated__/client";
+import AdminBlogPost from "../../../tina/pages/AdminBlogPost";
 
 export async function getStaticPaths() {
     const posts = await getCollection("news");
+
     return posts.map((post) => ({
         params: { slug: post.id },
-        props: { post },
+        props: {
+            post,
+            getTinaProps: async () =>
+                client.queries.news({
+                    relativePath: post.data.tinaInfo.relativePath,
+                }),
+        },
     }));
 }
 
-const { post } = Astro.props;
+const { post, getTinaProps } = Astro.props;
+const tinaProps = await getTinaProps();
 
 // 確保日期是 Date 物件
-const pubDate = post.data.pubDate instanceof Date 
-    ? post.data.pubDate 
+const pubDate = post.data.pubDate instanceof Date
+    ? post.data.pubDate
     : new Date(post.data.pubDate);
-
-// 渲染 MDX 內容
-const { Content } = await render(post);
 ---
 
 <BlogPost
@@ -30,5 +37,5 @@ const { Content } = await render(post);
     category={post.data.category}
     tags={post.data.tags}
 >
-    <Content />
+    <AdminBlogPost {...tinaProps} client:tina />
 </BlogPost>

@@ -34,6 +34,7 @@ const news = defineCollection({
     heroImage: z.string().nullish(),
     category: z.enum(["press", "events", "issues", "clarification"]),
     tags: z.array(z.string()).optional(),
+    body: z.any().optional(),
   }),
 });
 
