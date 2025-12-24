@@ -1,0 +1,237 @@
+/* src/components/react/FullscreenMenu/fullscreen-menu.css */
+
+/* ===== 全螢幕選單容器 ===== */
+.fullscreen-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(var(--b1)); /* DaisyUI base-100 */
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    pointer-events: none;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullscreen-menu__content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* ===== Logo 區域 ===== */
+.fullscreen-menu__logo {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+.fullscreen-menu__logo a {
+    font-size: 2rem;
+    font-weight: 700;
+    color: hsl(var(--bc)); /* DaisyUI base-content */
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+}
+
+.fullscreen-menu__logo a:hover {
+    opacity: 0.7;
+}
+
+/* ===== 導航連結 ===== */
+.fullscreen-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-top: 6rem;
+}
+
+.menu-link {
+    position: relative;
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+.menu-link a {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 300;
+    color: hsl(var(--bc));
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.menu-link a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: hsl(var(--p)); /* DaisyUI primary */
+    transition: width 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.menu-link a:hover::after {
+    width: 100%;
+}
+
+/* ===== 社交連結 ===== */
+.fullscreen-menu__socials {
+    display: flex;
+    gap: 2rem;
+    margin-top: auto;
+    flex-wrap: wrap;
+}
+
+.menu-social-link {
+    font-size: 0.875rem;
+    color: hsl(var(--bc) / 0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: color 0.3s ease;
+}
+
+.menu-social-link:hover {
+    color: hsl(var(--p));
+}
+
+/* ===== 選單按鈕 ===== */
+.menu-button {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    width: 120px;
+    height: 60px;
+    background-color: hsl(var(--n)); /* DaisyUI neutral */
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: width 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.menu-button--open {
+    width: 60px;
+}
+
+/* ===== 按鈕文字 ===== */
+.menu-button__text {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    color: hsl(var(--nc)); /* DaisyUI neutral-content */
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition:
+        opacity 0.3s ease,
+        left 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.menu-button:hover .menu-button__text {
+    left: 20px;
+}
+
+.menu-button--open .menu-button__text {
+    opacity: 0;
+}
+
+/* ===== 按鈕圖示容器 ===== */
+.menu-button__icon {
+    position: absolute;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: hsl(var(--p)); /* DaisyUI primary */
+    clip-path: circle(10% at 50% 50%);
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-button:hover .menu-button__icon {
+    clip-path: circle(35% at 50% 50%);
+}
+
+.menu-button--open .menu-button__icon {
+    clip-path: circle(50% at 50% 50%);
+    transform: scale(1.125);
+}
+
+/* ===== 漢堡圖示 ===== */
+.menu-button__hamburger {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.menu-button:hover .menu-button__hamburger,
+.menu-button--open .menu-button__hamburger {
+    opacity: 1;
+}
+
+.menu-button__bar {
+    position: absolute;
+    left: 50%;
+    width: 15px;
+    height: 2px;
+    background-color: hsl(var(--pc)); /* DaisyUI primary-content */
+    transition: all 0.25s ease-out;
+    transform: translateX(-50%);
+}
+
+.menu-button__bar[data-position="top"] {
+    top: 5px;
+}
+
+.menu-button__bar[data-position="bottom"] {
+    bottom: 5px;
+}
+
+/* X 形態 */
+.menu-button--open .menu-button__bar[data-position="top"] {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.menu-button--open .menu-button__bar[data-position="bottom"] {
+    bottom: 50%;
+    transform: translate(-50%, 50%) rotate(-45deg);
+}
+
+/* ===== 響應式設計 ===== */
+@media (max-width: 768px) {
+    .fullscreen-menu__nav {
+        margin-top: 4rem;
+    }
+
+    .menu-link a {
+        font-size: clamp(1.5rem, 8vw, 3rem);
+    }
+
+    .fullscreen-menu__socials {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

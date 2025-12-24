@@ -1,0 +1,87 @@
+---
+// src/layouts/BlogPost.astro
+import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
+import FormattedDate from "@/components/Kits/FormattedDate.astro";
+
+interface Props {
+    title: string;
+    description?: string;
+    pubDate: Date;
+    heroImage?: string | null;
+    tags?: string[];
+    category?: string;
+    post?: any;
+}
+
+const { title, description, pubDate, heroImage, tags, category, post } = Astro.props;
+
+// 從 post prop 提取資料（如果存在）
+const postTitle = title || post?.data?.title;
+const postDescription = description || post?.data?.description;
+const postPubDate = pubDate || post?.data?.pubDate;
+const postHeroImage = heroImage ?? post?.data?.heroImage;
+const postCategory = category || post?.data?.category;
+const postTags = tags || post?.data?.tags;
+
+// 分類標籤映射
+const categoryLabels: Record<string, string> = {
+    press: "新聞稿",
+    events: "活動資訊",
+    issues: "議題發言",
+    clarification: "闢謠專區",
+};
+---
+
+<Layout title={postTitle} description={postDescription}>
+    <article class="max-w-4xl mx-auto">
+        {
+            postHeroImage && (
+                <img
+                    src={postHeroImage}
+                    alt={postTitle}
+                    class="w-full h-64 md:h-80 object-cover rounded-lg mb-8"
+                />
+            )
+        }
+
+        <div class="prose lg:prose-xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">{postTitle}</h1>
+
+            <div class="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-8">
+                {
+                    postPubDate && (
+                        <FormattedDate date={postPubDate} />
+                    )
+                }
+                {
+                    postCategory && (
+                        <>
+                            <span>•</span>
+                            <a
+                                href={`/category/${postCategory}`}
+                                class="link link-primary"
+                            >
+                                {categoryLabels[postCategory] || postCategory}
+                            </a>
+                        </>
+                    )
+                }
+            </div>
+
+            {
+                postTags && postTags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        {postTags.map((tag: string) => (
+                            <span class="badge badge-outline">{tag}</span>
+                        ))}
+                    </div>
+                )
+            }
+
+            <div class="content prose prose-lg max-w-none">
+                <slot />
+            </div>
+        </div>
+    </article>
+</Layout>

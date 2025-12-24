@@ -1,34 +1,34 @@
 ---
-import ModernNavbar from '../components/navbar/ModernNavbar.astro';
-// import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.tsx';
-import  SpeedInsights  from "@vercel/speed-insights/astro";
-import { ClientRouter } from 'astro:transitions';
+// src/layouts/Layout.astro
+import config from "@/content/config/config.json";
+import BaseHead from "@/components/BaseHead.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+//import SizeIndicator from "@/components/Kits/SizeIndicator.astro";
+
+const { title, description, image, articleDate } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="zh-TW">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>預覽</title>
-		<ClientRouter />
-	</head>
-	<body>
-		<ModernNavbar transition:persist="navbar"/>
-		<slot />
-		<Footer transition:persist="footer" client:visible />
-		<SpeedInsights />
-	</body>
+<html lang="zh-TW" data-theme="light">
+    <head>
+        <BaseHead title={title} description={description} ogImage={image} />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{config.seo.title}</title>
+    </head>
+    <body>
+        <!-- Header outside of constrained main for full-width navbar -->
+        <Header />
+        
+        <main
+            class="px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-12 mt-4 overflow-hidden md:overflow-visible"
+        >
+            <slot />
+        </main>
+        
+        <!-- Footer outside of constrained main for full-width -->
+        <Footer />
+        <!-- <SizeIndicator /> -->
+    </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

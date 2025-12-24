@@ -1,16 +1,55 @@
 ---
-import TransparentLayout from '../layouts/TransparentLayout.astro';
-import Layout from '../layouts/Layout.astro';
-import IndexPage from '../components/IndexPage.astro';
-import "@unocss/reset/tailwind.css";
-import "uno.css";
-import "../styles/global.css";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import config from "../content/config/config.json";
+import HeroCarousel from "../components/HeroCarousel/HeroCarousel.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// 從 TinaCMS 載入資料
+const pageData = await import("../content/carousel/homeCarousel.json");
+
+// 提取第一個 heroCarousel block
+const carouselBlock = pageData.blocks?.find(
+    (block: any) => block._template === "heroCarousel",
+);
+
+// 轉換資料格式以符合 HeroCarousel 元件的期望
+const slides =
+    carouselBlock?.slides?.map((slide: any) => ({
+        title: slide.title,
+        description: slide.subtitle,
+        image: slide.image,
+        buttonText: slide.showButton ? slide.buttonText : undefined,
+        buttonLink: slide.showButton ? slide.buttonLink : undefined,
+    })) || [];
+
+const autoplay = carouselBlock?.autoplay ?? true;
+const autoplayDelay = carouselBlock?.delay ?? 5000;
 ---
 
-<TransparentLayout>
-	<IndexPage />
-	
-</TransparentLayout>
+<!doctype html>
+<html lang="zh-TW">
+    <head>
+        <BaseHead
+            title={config.seo.title}
+            description={config.seo.description}
+        />
+    </head>
+    <body>
+        <Header />
+        {
+            slides.length > 0 ? (
+                <HeroCarousel
+                    slides={slides}
+                    autoplay={autoplay}
+                    autoplayDelay={autoplayDelay}
+                />
+            ) : (
+                <div class="no-content">
+                    <p>請在 TinaCMS 中添加輪播內容</p>
+                </div>
+            )
+        }
+        <Footer />
+    </body>
+</html>

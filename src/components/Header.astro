@@ -1,0 +1,738 @@
+---
+import "../styles/logo.css";
+import { navigate } from "astro:transitions/client";
+
+let config;
+try {
+    config = (await import("../content/config/config.json")).default;
+} catch (e) {
+    console.error("無法載入配置:", e);
+    config = {
+        seo: { title: "社會民主黨" },
+        nav: [],
+        socialLinks: [],
+    };
+}
+
+// 定義多層級選單結構
+const menuStructure = config.nav || [];
+
+const socialLinks = config.socialLinks || [];
+---
+
+<nav class="navbar bg-base-100 shadow-sm fixed top-0 w-full z-50">
+    <div class="navbar-start">
+        <label class="btn btn-circle swap swap-rotate" id="menu-toggle">
+            <input type="checkbox" id="menu-checkbox" />
+            <svg
+                class="swap-off fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 512 512"
+            >
+                <path
+                    d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
+                ></path>
+            </svg>
+            <svg
+                class="swap-on fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 512 512"
+            >
+                <polygon
+                    points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"
+                ></polygon>
+            </svg>
+        </label>
+    </div>
+
+    <div class="navbar-center">
+        <a href="/" class="flex items-center">
+            <img src="/logo.svg" alt={config.seo.title} class="navbar-logo" />
+        </a>
+    </div>
+
+    <div class="navbar-end gap-2">
+        <a href="/join" class="btn btn-primary btn-sm">加入我們</a>
+        <a
+            href="https://sdparty.oen.tw/#"
+            target="_blank"
+            class="btn btn-secondary btn-sm">捐款支持</a
+        >
+    </div>
+</nav>
+
+<!-- 全螢幕選單 HTML -->
+<div id="fullscreen-menu" class="fullscreen-menu">
+    <div class="fullscreen-menu__content">
+        <!-- 主選單容器 -->
+        <nav class="fullscreen-menu__nav" id="main-menu">
+            {
+                menuStructure.map((item) => (
+                    <div class="menu-link" data-menu-type={item.type}>
+                        {item.type === "submenu" ? (
+                            <button
+                                class="submenu-trigger"
+                                data-submenu-id={item.id}
+                                type="button"
+                            >
+                                {item.label}
+                                <svg
+                                    class="submenu-arrow"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </button>
+                        ) : (
+                            <a
+                                href={item.href}
+                                class:list={[
+                                    item.primary && "btn-link-primary",
+                                    item.secondary && "btn-link-secondary",
+                                ]}
+                            >
+                                {item.label}
+                            </a>
+                        )}
+                    </div>
+                ))
+            }
+        </nav>
+
+        <!-- 子選單容器 (隱藏) -->
+        {
+            menuStructure
+                .filter((item) => item.type === "submenu")
+                .map((item) => (
+                    <nav
+                        class="fullscreen-menu__submenu"
+                        id={`submenu-${item.id}`}
+                        data-submenu={item.id}
+                    >
+                        <div class="submenu-back">
+                            <button
+                                class="back-button"
+                                data-submenu-back={item.id}
+                                type="button"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <polyline points="15 18 9 12 15 6" />
+                                </svg>
+                                返回
+                            </button>
+                        </div>
+                        <div class="submenu-title">{item.label}</div>
+                        {item.submenu.map((subItem) => (
+                            <div class="submenu-link">
+                                <a href={subItem.href}>{subItem.label}</a>
+                            </div>
+                        ))}
+                    </nav>
+                ))
+        }
+
+        <!-- 社交連結 -->
+        <div class="fullscreen-menu__socials">
+            {
+                socialLinks.map((link) => (
+                    <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="menu-social-link"
+                    >
+                        {link.name}
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    import gsap from "gsap";
+    import CustomEase from "gsap/CustomEase";
+
+    function setupMenu() {
+        const menu = document.getElementById("fullscreen-menu");
+        const checkbox = document.getElementById("menu-checkbox");
+        const mainMenu = document.getElementById("main-menu");
+        const links = menu?.querySelectorAll(".menu-link");
+        const socialLinks = menu?.querySelectorAll(".menu-social-link");
+
+        if (!menu || !checkbox || !links || !socialLinks || !mainMenu) return;
+
+        // 檢查是否已經初始化過
+        if (menu.dataset.initialized === "true") {
+            return;
+        }
+        menu.dataset.initialized = "true";
+
+        gsap.registerPlugin(CustomEase);
+        CustomEase.create(
+            "hop",
+            "M0,0 C0.354,0 0.464,0.133 0.498,0.502 0.532,0.872 0.651,1 1,1",
+        );
+
+        // 初始化
+        gsap.set(menu, {
+            clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        });
+        gsap.set(links, { y: 30, opacity: 0 });
+        gsap.set(socialLinks, { y: 30, opacity: 0 });
+        menu.style.pointerEvents = "none";
+
+        // 子選單狀態
+        let currentSubmenu = null;
+
+        function openMenu() {
+            menu.style.pointerEvents = "all";
+            document.body.classList.add("menu-open");
+            gsap.to(menu, {
+                clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+                ease: "hop",
+                duration: 1.5,
+            });
+            gsap.to(links, {
+                y: 0,
+                opacity: 1,
+                stagger: 0.1,
+                delay: 0.85,
+                duration: 1,
+                ease: "power3.out",
+            });
+            gsap.to(socialLinks, {
+                y: 0,
+                opacity: 1,
+                stagger: 0.05,
+                delay: 0.85,
+                duration: 1,
+                ease: "power3.out",
+            });
+        }
+
+        function closeMenu() {
+            gsap.to(menu, {
+                clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+                ease: "hop",
+                duration: 1.5,
+                onComplete: () => {
+                    menu.style.pointerEvents = "none";
+                    gsap.set(menu, {
+                        clipPath:
+                            "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+                    });
+                    gsap.set(links, { y: 30, opacity: 0 });
+                    gsap.set(socialLinks, { y: 30, opacity: 0 });
+                    document.body.classList.remove("menu-open");
+                    // 重置子選單
+                    if (currentSubmenu) {
+                        const submenu = document.getElementById(
+                            `submenu-${currentSubmenu}`,
+                        );
+                        if (submenu) {
+                            submenu.style.display = "none";
+                        }
+                        mainMenu.style.display = "flex";
+                        currentSubmenu = null;
+                    }
+                },
+            });
+        }
+
+        function openSubmenu(submenuId) {
+            const submenu = document.getElementById(`submenu-${submenuId}`);
+            const submenuLinks = submenu?.querySelectorAll(".submenu-link");
+
+            if (!submenu) return;
+
+            currentSubmenu = submenuId;
+
+            // 隱藏主選單
+            gsap.to(mainMenu, {
+                x: -100,
+                opacity: 0,
+                duration: 0.5,
+                ease: "power3.out",
+                onComplete: () => {
+                    mainMenu.style.display = "none";
+                },
+            });
+
+            // 顯示子選單
+            submenu.style.display = "flex";
+            gsap.set(submenuLinks, { y: 30, opacity: 0 });
+            gsap.fromTo(
+                submenu,
+                { x: 100, opacity: 0 },
+                { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+            );
+            gsap.to(submenuLinks, {
+                y: 0,
+                opacity: 1,
+                stagger: 0.1,
+                delay: 0.3,
+                duration: 0.8,
+                ease: "power3.out",
+            });
+        }
+
+        function closeSubmenu() {
+            if (!currentSubmenu) return;
+
+            const submenu = document.getElementById(
+                `submenu-${currentSubmenu}`,
+            );
+
+            // 隱藏子選單
+            gsap.to(submenu, {
+                x: 100,
+                opacity: 0,
+                duration: 0.5,
+                ease: "power3.out",
+                onComplete: () => {
+                    submenu.style.display = "none";
+                    currentSubmenu = null;
+                },
+            });
+
+            // 顯示主選單
+            mainMenu.style.display = "flex";
+            gsap.fromTo(
+                mainMenu,
+                { x: -100, opacity: 0 },
+                { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+            );
+        }
+
+        function handleToggle() {
+            if (checkbox.checked) {
+                openMenu();
+            } else {
+                closeMenu();
+            }
+        }
+
+        // 移除舊的事件監聽器(如果存在)
+        checkbox.removeEventListener("change", handleToggle);
+        checkbox.addEventListener("change", handleToggle);
+
+        // 綁定子選單觸發器
+        const submenuTriggers = menu.querySelectorAll(".submenu-trigger");
+        submenuTriggers.forEach((trigger) => {
+            const handler = () => {
+                const submenuId = trigger.getAttribute("data-submenu-id");
+                openSubmenu(submenuId);
+            };
+            trigger.removeEventListener("click", handler);
+            trigger.addEventListener("click", handler);
+        });
+
+        // 綁定返回按鈕
+        const backButtons = menu.querySelectorAll(".back-button");
+        backButtons.forEach((button) => {
+            const handler = () => {
+                closeSubmenu();
+            };
+            button.removeEventListener("click", handler);
+            button.addEventListener("click", handler);
+        });
+
+        // 點擊選單連結時關閉(不包含按鈕)
+        menu.querySelectorAll("a").forEach((link) => {
+            const handler = (e) => {
+                // 不阻止預設行為,讓連結正常跳轉
+                checkbox.checked = false;
+                closeMenu();
+            };
+            link.removeEventListener("click", handler);
+            link.addEventListener("click", handler);
+        });
+
+        // ESC 鍵關閉
+        const escHandler = (e) => {
+            if (e.key === "Escape" && checkbox.checked) {
+                if (currentSubmenu) {
+                    closeSubmenu();
+                } else {
+                    checkbox.checked = false;
+                    closeMenu();
+                }
+            }
+        };
+        document.removeEventListener("keydown", escHandler);
+        document.addEventListener("keydown", escHandler);
+    }
+
+    // 頁面載入時初始化
+    if (typeof window !== "undefined") {
+        // 立即執行
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", setupMenu);
+        } else {
+            setupMenu();
+        }
+
+        // 監聽 Astro 的頁面切換事件
+        document.addEventListener("astro:page-load", setupMenu);
+    }
+</script>
+
+<style>
+    h2 a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    nav.navbar {
+        backdrop-filter: blur(10px);
+        z-index: 9999 !important;
+        position: relative;
+    }
+
+    #menu-toggle {
+        z-index: 10000 !important;
+        position: relative;
+    }
+
+    /* ===== 全螢幕選單基礎 ===== */
+    .fullscreen-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #eb5078 !important;
+        color: #fff !important;
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+        pointer-events: none;
+        z-index: 9998;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .fullscreen-menu__content {
+        width: 100%;
+        max-width: 1200px;
+        height: 100%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .fullscreen-menu__logo {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        z-index: 10;
+    }
+
+    .fullscreen-menu__logo a {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #fff !important;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: opacity 0.3s ease;
+    }
+
+    .fullscreen-menu__logo a:hover {
+        opacity: 0.7;
+    }
+
+    /* ===== 主選單 ===== */
+    .fullscreen-menu__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+        margin-top: 6rem;
+        width: 100%;
+        overflow-y: auto;
+    }
+
+    .menu-link {
+        position: relative;
+        transform: translateY(30px);
+        opacity: 0;
+        width: 100%;
+    }
+
+    .menu-link a,
+    .menu-link button {
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 300;
+        color: #fff !important;
+        text-decoration: none;
+        letter-spacing: -0.02em;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        text-align: left;
+    }
+
+    .submenu-trigger {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .submenu-arrow {
+        width: 2rem;
+        height: 2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .submenu-trigger:hover .submenu-arrow {
+        transform: translateX(0.5rem);
+    }
+
+    .menu-link a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #fff !important;
+        transition: width 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+    .menu-link a:hover::after {
+        width: 100%;
+    }
+
+    /* 按鈕樣式連結 */
+    .btn-link-primary,
+    .btn-link-secondary {
+        margin-top: 1rem;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-size: 1.25rem !important;
+        font-weight: 500;
+    }
+
+    .btn-link-primary {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-link-primary:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-link-secondary {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-link-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ===== 子選單 ===== */
+    .fullscreen-menu__submenu {
+        display: none;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+        padding-top: 6rem;
+        margin: 0;
+        overflow-y: auto;
+    }
+
+    .submenu-back {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .back-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: none;
+        border: none;
+        color: #fff !important;
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: opacity 0.3s ease;
+    }
+
+    .back-button:hover {
+        opacity: 0.7;
+    }
+
+    .back-button svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .submenu-title {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .submenu-link {
+        position: relative;
+        transform: translateY(30px);
+        opacity: 0;
+        width: 100%;
+    }
+
+    .submenu-link a {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        font-weight: 300;
+        color: #fff !important;
+        text-decoration: none;
+        letter-spacing: -0.02em;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+    }
+
+    .submenu-link a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #fff !important;
+        transition: width 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+    .submenu-link a:hover::after {
+        width: 100%;
+    }
+
+    /* ===== 社交連結 ===== */
+    .fullscreen-menu__socials {
+        display: flex;
+        gap: 2rem;
+        margin-top: auto;
+        flex-wrap: wrap;
+    }
+
+    .menu-social-link {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.7) !important;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transform: translateY(30px);
+        opacity: 0;
+        transition: color 0.3s ease;
+    }
+
+    .menu-social-link:hover {
+        color: #fff !important;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    /* ===== 響應式 ===== */
+    @media (max-width: 768px) {
+        .fullscreen-menu__nav,
+        .fullscreen-menu__submenu {
+            margin-top: 4rem;
+            padding-top: 4rem;
+        }
+
+        .menu-link a,
+        .menu-link button {
+            font-size: clamp(1.5rem, 8vw, 3rem);
+        }
+
+        .submenu-link a {
+            font-size: clamp(1.25rem, 6vw, 2rem);
+        }
+
+        .fullscreen-menu__socials {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .submenu-arrow {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    .logo-container {
+        display: inline-block;
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+
+    .logo {
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    .secondary-logo {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        opacity: 0;
+    }
+
+    @media (min-width: 768px) {
+        .logo-container:hover {
+            transform: translateY(-10px);
+        }
+
+        .logo-container:hover .primary-logo {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .logo-container:hover .secondary-logo {
+            opacity: 1;
+            transform: translateY(-20px);
+            /* 放大第二個Logo */
+            transform: translateY(-10px) scale(2.3);
+            /* 調整位置以保持居中 */
+            transform-origin: center;
+        }
+    }
+</style>

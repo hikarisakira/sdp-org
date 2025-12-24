@@ -1,0 +1,25 @@
+---
+import HeroCarouselClient from "./HeroCarousel.tsx";
+import "./hero-carousel.css";
+
+interface Props {
+    slides: Array<{
+        title: string;
+        description: string;
+        image: string;
+        buttonText?: string;
+        buttonLink?: string;
+    }>;
+    autoplay?: boolean;
+    autoplayDelay?: number;
+}
+
+const { slides, autoplay = true, autoplayDelay = 5000 } = Astro.props;
+---
+
+<HeroCarouselClient
+    slides={slides}
+    autoplay={autoplay}
+    autoplayDelay={autoplayDelay}
+    client:visible
+/>
