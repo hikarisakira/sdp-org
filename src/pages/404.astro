@@ -1,0 +1,17 @@
+---
+import Layout from "@/layouts/Layout"
+---
+
+<Layout title="找不到網頁呢：（" description="404">
+    <div class="container flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 min-h-[70vh] mx-auto px-4 lg:px-8 py-8">
+        <div class="flex flex-col items-center lg:items-start justify-center text-center lg:text-start space-y-4 shrink-0 order-2 lg:order-1">
+        	<h1 class="font-extrabold">404</h1>
+        	<h2>Aw, snap!</h2>
+        	<p class="text-xl">迷路了？回首頁吧！<br />與我們一同再次啟程，找尋生活的美好。</p>
+            <a href="/" class="btn btn-secondary">返回主頁</a>
+        </div>
+        <div class="shrink-0 flex items-center justify-center order-1 lg:order-2">
+            <img src="error.svg" alt="404 Error" class="w-auto h-auto max-h-[250px] lg:max-h-[400px]">
+        </div>
+    </div>
+</Layout>
