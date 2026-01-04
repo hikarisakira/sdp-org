@@ -1,0 +1,19 @@
+---
+import Layout from "@/layouts/Layout";
+
+Astro.response.status = 418;
+---
+
+<Layout title="恭喜你找到一隻茶壺，現在回去吧。" description="418">
+  <div
+    class="container flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 min-h-[70vh] mx-auto px-4 lg:px-8 py-8"
+  >
+    <div
+      class="flex flex-col items-center justify-center text-center space-y-4 shrink-0 order-2 lg:order-1"
+    >
+      <h1 class="font-extrabold">418</h1>
+      <h2>🫖</h2>
+      <a href="/" class="btn btn-secondary">返回主頁</a>
+    </div>
+  </div>
+</Layout>
