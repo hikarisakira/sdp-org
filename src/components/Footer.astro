@@ -1,95 +1,52 @@
 ---
 import config from "../content/config/config.json";
-import IconLink from "./react/IconLink";
+
+import LogoZone from "./footer/logo.svelte";
+import FooterNavigation from "./footer/navi.svelte";
+import ContactButton from "./footer/contact.svelte";
 const today = new Date();
 ---
-<div class="tina-footer">
-	<div class="tina-banner-content"><img src="/llama.svg" alt="Tina CMS Llama Logo" /><a href="https://tina.io" target="_blank" rel="noopener noreferrer">Powered by TinaCMS</a>
-	</div>
-</div>
-	<footer class="copyright-footer">
-		&copy; {today.getFullYear()}
-		{config.seo.siteOwner}. All rights reserved.
-		<div class="social-links">
-			{
-				config?.contactLinks?.map((link) => {
-					return (
-						<IconLink {...link} />
-					);
-				})
-			}
-		</div>
-	</footer>
 
-<style>
+<footer
+  class="copyright-footer"
+  style="background-color: #EB5078; padding: 2rem 1rem;"
+>
+  <div
+    style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: row; justify-content: space-between; gap: 2rem; flex-wrap: wrap; color: white;"
+  >
+    <LogoZone client:load />
+    <FooterNavigation client:load />
+    <ContactButton client:load />
+  </div>
+  <div
+    style="max-width: 1280px; margin: 1rem auto 0; text-align: center; color: white; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.2);"
+  >
+    <div>{today.getFullYear()},&nbsp;{config.seo.siteOwner}.</div>
+    <p style="margin: 0.5rem 0;">
+      本站內容採用
+      <a
+        rel="license"
+        href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hant"
+        target="_blank"
+        style="display:inline-block;"
+      >
+        創用 CC 姓名標示-相同方式分享 4.0 國際 授權條款
+      </a> 釋出。
+    </p>
 
-	.copyright-footer {
-		padding: 2em 1em 2em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
-
-	.tina-footer {
-		display: flex;
-		justify-content: center;
-		position: relative;
-		width: 100%;
-		overflow: hidden;
-		background-image: linear-gradient(60deg, #000000 0%,  #EC4815 50%, #000000 100%);
-		padding: 1.5em 0;
-	}
-
-	.tina-banner-content {
-		display: flex;
-		align-items: center;
-		gap: 0.5em;
-		font-size: 1.2em;
-		position: relative;
-		z-index: 2;
-	}
-
-	.tina-footer::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -50%;
-		width: 200%;
-		height: 100%;
-		background-image: linear-gradient(60deg, #1F1E24 25%,   #EC4815 50%, #1F1E24 75%);
-		transition: transform 1s ease-in-out;
-		z-index: 1;
-	}
-
-	.tina-footer:has(.tina-banner-content a:hover)::before {
-		transform: scaleX(2);
-	}
-
-	.tina-banner-content img {
-		width: 30px;
-		height: auto;
-	}
-
-	.tina-banner-content a {
-		color: white;
-		text-decoration: none;
-		padding-top: 0.5em;
-		font-weight: bold;
-	}
-</style>
+    <!-- 選項：加入 CC 圖示提升辨識度 -->
+    <a
+      rel="license"
+      href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hant"
+      target="_blank"
+      style="display:inline-block; margin-top: 0.5rem;"
+    >
+      <img
+        loading="lazy"
+        alt="創用 CC 授權條款"
+        style="border-width:0"
+        src="/cc-by-sa.svg"
+      />
+    </a>
+  </div>
+</footer>
