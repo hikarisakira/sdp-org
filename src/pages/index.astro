@@ -5,6 +5,9 @@ import Footer from "../components/Footer.astro";
 import config from "../content/config/config.json";
 import HeroCarousel from "../components/index/HeroCarousel/HeroCarousel.astro";
 import LatestNews from "@/components/index/NewsBlock/news";
+import MissionStatement from "@/components/index/MissionStatement/MissionStatement.svelte";
+import CoreValues from "@/components/index/CoreValues/CoreValues.svelte";
+import ActionCTA from "@/components/index/ActionCTA/ActionCTA.svelte";
 import { getCollection } from "astro:content";
 
 // 從 TinaCMS 載入資料
@@ -74,7 +77,10 @@ const latestPosts = sortedPosts.slice(0, 6).map((post) => ({
         </div>
       )
     }
+    <MissionStatement client:visible />
     <LatestNews posts={latestPosts} client:visible />
+    <CoreValues client:visible />
+    <ActionCTA client:visible />
     <Footer />
   </body>
 </html>

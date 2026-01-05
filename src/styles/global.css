@@ -34,6 +34,7 @@
     font-display: swap;
 }
 body {
+<<<<<<< Updated upstream
     font-family: "Atkinson", sans-serif;
     margin: 0;
     padding: 0;
@@ -46,7 +47,34 @@ body {
     font-size: 20px;
     line-height: 1.7;
     overflow-x: hidden;
+=======
+  font-family: "Atkinson", sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background: linear-gradient(var(--gray-gradient)) no-repeat;
+  background-size: 100% 600px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 20px;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
+
+/* Light mode text colors - improved contrast */
+body {
+  color: #0f172a;
+}
+
+/* Dark mode text colors */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: rgb(229, 233, 240);
+    background: #1a1a1a;
+  }
+>>>>>>> Stashed changes
+}
+
 body.menu-open {
     overflow: hidden;
 }
@@ -56,6 +84,22 @@ main {
     margin: auto;
     padding: 3em 1em;
 }
+<<<<<<< Updated upstream
+=======
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+>>>>>>> Stashed changes
 article {
     width: 720px;
     max-width: calc(100% - 2em);
@@ -68,9 +112,21 @@ h3,
 h4,
 h5,
 h6 {
+<<<<<<< Updated upstream
     margin: 0 0 0.5rem 0;
     color: rgb(var(--black));
     line-height: 1.2;
+=======
+  margin: 0 0 0.5rem 0;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+@media (prefers-color-scheme: dark) {
+  h1, h2, h3, h4, h5, h6 {
+    color: rgb(229, 233, 240);
+  }
+>>>>>>> Stashed changes
 }
 h1 {
     font-size: 3.052em;
@@ -114,9 +170,23 @@ img {
     border-radius: 8px;
 }
 code {
+<<<<<<< Updated upstream
     padding: 2px 5px;
     background-color: rgb(var(--gray-light));
     border-radius: 2px;
+=======
+  padding: 2px 5px;
+  background-color: #e2e8f0;
+  border-radius: 2px;
+  color: #0f172a;
+}
+
+@media (prefers-color-scheme: dark) {
+  code {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(229, 233, 240);
+  }
+>>>>>>> Stashed changes
 }
 pre {
     padding: 1.5em;
@@ -174,4 +244,52 @@ hr {
 }
 .social-links a:hover {
     color: rgb(var(--gray-dark));
+}
+
+/* ===== MDX/Article Link Styles ===== */
+/* Make hyperlinks clearly visible in article content */
+article a:not(.btn):not(.badge),
+.prose a:not(.btn):not(.badge),
+.content a:not(.btn):not(.badge) {
+  color: #eb5078;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+article a:not(.btn):not(.badge):hover,
+.prose a:not(.btn):not(.badge):hover,
+.content a:not(.btn):not(.badge):hover {
+  color: #d63d64;
+  text-decoration-thickness: 3px;
+  background-color: rgba(235, 80, 120, 0.1);
+  border-radius: 2px;
+  padding: 0 2px;
+  margin: 0 -2px;
+}
+
+/* External link indicator (optional visual cue) */
+article a[target="_blank"]:not(.btn)::after,
+.prose a[target="_blank"]:not(.btn)::after,
+.content a[target="_blank"]:not(.btn)::after {
+  content: " ↗";
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+@media (prefers-color-scheme: dark) {
+  article a:not(.btn):not(.badge),
+  .prose a:not(.btn):not(.badge),
+  .content a:not(.btn):not(.badge) {
+    color: #f472b6;
+  }
+
+  article a:not(.btn):not(.badge):hover,
+  .prose a:not(.btn):not(.badge):hover,
+  .content a:not(.btn):not(.badge):hover {
+    color: #f9a8d4;
+    background-color: rgba(244, 114, 182, 0.15);
+  }
 }
