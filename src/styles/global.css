@@ -34,20 +34,6 @@
     font-display: swap;
 }
 body {
-<<<<<<< Updated upstream
-    font-family: "Atkinson", sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    background: linear-gradient(var(--gray-gradient)) no-repeat;
-    background-size: 100% 600px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    color: rgb(var(--gray-dark));
-    font-size: 20px;
-    line-height: 1.7;
-    overflow-x: hidden;
-=======
   font-family: "Atkinson", sans-serif;
   margin: 0;
   padding: 0;
@@ -72,7 +58,6 @@ body {
     color: rgb(229, 233, 240);
     background: #1a1a1a;
   }
->>>>>>> Stashed changes
 }
 
 
@@ -85,8 +70,6 @@ main {
     margin: auto;
     padding: 3em 1em;
 }
-<<<<<<< Updated upstream
-=======
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
@@ -100,7 +83,6 @@ main {
   }
 }
 
->>>>>>> Stashed changes
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -125,11 +107,6 @@ h3,
 h4,
 h5,
 h6 {
-<<<<<<< Updated upstream
-    margin: 0 0 0.5rem 0;
-    color: rgb(var(--black));
-    line-height: 1.2;
-=======
   margin: 0 0 0.5rem 0;
   color: rgb(var(--black));
   line-height: 1.2;
@@ -139,7 +116,6 @@ h6 {
   h1, h2, h3, h4, h5, h6 {
     color: rgb(229, 233, 240);
   }
->>>>>>> Stashed changes
 }
 h1 {
     font-size: 3.052em;
@@ -183,11 +159,6 @@ img {
     border-radius: 8px;
 }
 code {
-<<<<<<< Updated upstream
-    padding: 2px 5px;
-    background-color: rgb(var(--gray-light));
-    border-radius: 2px;
-=======
   padding: 2px 5px;
   background-color: #e2e8f0;
   background-color: #e2e8f0;
@@ -200,7 +171,6 @@ code {
     background-color: rgba(255, 255, 255, 0.1);
     color: rgb(229, 233, 240);
   }
->>>>>>> Stashed changes
 }
 pre {
     padding: 1.5em;

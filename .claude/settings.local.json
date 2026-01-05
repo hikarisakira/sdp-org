@@ -3,9 +3,6 @@
     "allow": [
       "Bash(cat:*)",
       "Bash(find:*)",
-<<<<<<< Updated upstream
-      "Bash(npm run dev:*)"
-=======
       "Bash(npm run dev:*)",
       "Bash(ls:*)",
       "Skill(ui-ux-pro-max)",
