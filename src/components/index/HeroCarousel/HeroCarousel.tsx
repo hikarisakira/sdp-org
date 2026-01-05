@@ -74,7 +74,7 @@ export default function HeroCarousel({
             <div className="flex gap-3 justify-center lg:justify-start">
               <button
                 onClick={() => swiperRef.current?.slidePrev()}
-                className="btn btn-sm lg:btn-md btn-circle btn-outline btn-primary hover:bg-primary hover:text-primary-content transition-all duration-200"
+                className="btn btn-sm lg:btn-md btn-circle btn-outline btn-primary"
                 aria-label="上一張"
               >
                 <svg
@@ -93,7 +93,7 @@ export default function HeroCarousel({
               </button>
               <button
                 onClick={() => swiperRef.current?.slideNext()}
-                className="btn btn-sm lg:btn-md btn-circle btn-outline btn-primary hover:bg-primary hover:text-primary-content transition-all duration-200"
+                className="btn btn-sm lg:btn-md btn-circle btn-outline btn-primary"
                 aria-label="下一張"
               >
                 <svg
@@ -118,10 +118,10 @@ export default function HeroCarousel({
                 <button
                   key={index}
                   onClick={() => swiperRef.current?.slideTo(index)}
-                  className={`h-2 rounded-full transition-all duration-200 ${
+                  className={`h-2 rounded-full transition-all ${
                     index === activeIndex
                       ? "w-8 bg-primary"
-                      : "w-2 bg-base-300 hover:bg-base-400 cursor-pointer"
+                      : "w-2 bg-base-300 hover:bg-base-400"
                   }`}
                   aria-label={`前往第 ${index + 1} 張`}
                 />

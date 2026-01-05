@@ -10,14 +10,14 @@ const {
 } = Astro.props;
 ---
 
-<article class="grid grid-rows-[300px_auto] group cursor-pointer">
+<article class="grid grid-rows-[300px_auto] group">
     <a class="relative effect" href={`/post/${slug}/`}
         ><Image
             src={heroImage}
             width={600}
             height={200}
             format="webp"
-            class="h-full min-w-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-xs"
+            class="h-full min-w-full object-cover hover:scale-[101%] transition-all duration-200 rounded-[2px]"
             alt={`img of ${title}`}
         />
 
@@ -48,7 +48,7 @@ const {
             </div>
 
             <p
-                class="overflow-hidden line-clamp-3 text-gray-700 dark:text-white mb-5 font-normal md:pr-[15%]"
+                class="overflow-hidden line-clamp-3 text-gray-700 dark:text-white mb-5 font-[400] md:pr-[15%]"
             >
                 {description}
             </p>
@@ -61,7 +61,7 @@ const {
                 aria-label={`go to ${title}`}
             >
                 Read Post <span
-                    class="mt-px group-hover:rotate-45 transition-transform duration-200 ease-in-out"
+                    class="mt-[1px] group-hover:rotate-45 transition-transform duration-250 ease-in-out"
                     ><ArrowUp width="18" height="18" /></span
                 >
             </a>

@@ -292,13 +292,6 @@ hr {
   color: rgb(var(--gray-dark));
 }
 
-/* ===== MDX/Article Link Styles ===== */
-/* Make hyperlinks clearly visible in article content */
-article a:not(.btn):not(.badge),
-.prose a:not(.btn):not(.badge),
-.content a:not(.btn):not(.badge) {
-  color: #eb5078;
-  text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
   transition: all 0.2s ease;
@@ -314,28 +307,7 @@ article a:not(.btn):not(.badge):hover,
   border-radius: 2px;
   padding: 0 2px;
   margin: 0 -2px;
-}
-
-/* External link indicator (optional visual cue) */
-article a[target="_blank"]:not(.btn)::after,
-.prose a[target="_blank"]:not(.btn)::after,
-.content a[target="_blank"]:not(.btn)::after {
-  content: " ↗";
   font-size: 0.8em;
-  opacity: 0.7;
-}
-
-@media (prefers-color-scheme: dark) {
-  article a:not(.btn):not(.badge),
-  .prose a:not(.btn):not(.badge),
-  .content a:not(.btn):not(.badge) {
     color: #f472b6;
-  }
-
-  article a:not(.btn):not(.badge):hover,
-  .prose a:not(.btn):not(.badge):hover,
-  .content a:not(.btn):not(.badge):hover {
-    color: #f9a8d4;
-    background-color: rgba(244, 114, 182, 0.15);
   }
 }

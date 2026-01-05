@@ -11,6 +11,5 @@
       "Bash(pkill:*)",
       "Bash(bun run dev)"
     ]
-  },
-  "outputStyle": "Explanatory"
+  }
 }
