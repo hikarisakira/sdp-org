@@ -4,7 +4,13 @@
       "Bash(cat:*)",
       "Bash(find:*)",
       "Bash(npm run dev:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Skill(ui-ux-pro-max)",
+      "Skill(ui-ux-pro-max:*)",
+      "Bash(python3:*)",
+      "Bash(pkill:*)",
+      "Bash(bun run dev)"
     ]
-  }
+  },
+  "outputStyle": "Explanatory"
 }

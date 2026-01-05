@@ -50,9 +50,9 @@ body {
   overflow-x: hidden;
 }
 
-/* Light mode text colors */
+/* Light mode text colors - improved contrast - improved contrast */
 body {
-  color: rgb(var(--gray-dark));
+  color: #0f172a;
 }
 
 /* Dark mode text colors */
@@ -62,8 +62,37 @@ body {
     background: #1a1a1a;
   }
 }
+
+
+body.menu-open {
+    overflow: hidden;
+}
 body.menu-open {
   overflow: hidden;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 article {
@@ -151,8 +180,10 @@ img {
 }
 code {
   padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
+  background-color: #e2e8f0;
+  background-color: #e2e8f0;
   border-radius: 2px;
+  color: #0f172a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -259,4 +290,52 @@ hr {
 }
 .social-links a:hover {
   color: rgb(var(--gray-dark));
+}
+
+/* ===== MDX/Article Link Styles ===== */
+/* Make hyperlinks clearly visible in article content */
+article a:not(.btn):not(.badge),
+.prose a:not(.btn):not(.badge),
+.content a:not(.btn):not(.badge) {
+  color: #eb5078;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+article a:not(.btn):not(.badge):hover,
+.prose a:not(.btn):not(.badge):hover,
+.content a:not(.btn):not(.badge):hover {
+  color: #d63d64;
+  text-decoration-thickness: 3px;
+  background-color: rgba(235, 80, 120, 0.1);
+  border-radius: 2px;
+  padding: 0 2px;
+  margin: 0 -2px;
+}
+
+/* External link indicator (optional visual cue) */
+article a[target="_blank"]:not(.btn)::after,
+.prose a[target="_blank"]:not(.btn)::after,
+.content a[target="_blank"]:not(.btn)::after {
+  content: " ↗";
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+@media (prefers-color-scheme: dark) {
+  article a:not(.btn):not(.badge),
+  .prose a:not(.btn):not(.badge),
+  .content a:not(.btn):not(.badge) {
+    color: #f472b6;
+  }
+
+  article a:not(.btn):not(.badge):hover,
+  .prose a:not(.btn):not(.badge):hover,
+  .content a:not(.btn):not(.badge):hover {
+    color: #f9a8d4;
+    background-color: rgba(244, 114, 182, 0.15);
+  }
 }
