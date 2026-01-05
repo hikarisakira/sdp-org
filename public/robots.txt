@@ -3,3 +3,5 @@ Disallow: /*.php$
 Disallow: /*.js$
 Disallow: /*.inc$
 Disallow: /*.css$
+Disallow: /admin/*
+Disallow: /private/*
