@@ -45,10 +45,10 @@ const categoryLabels: Record<string, string> = {
             )
         }
 
-        <div class="prose lg:prose-xl mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4">{postTitle}</h1>
+        <div class="prose lg:prose-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 wrap-break-word">{postTitle}</h1>
 
-            <div class="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-8">
+            <div class="flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8">
                 {
                     postPubDate && (
                         <FormattedDate date={postPubDate} />
@@ -79,7 +79,7 @@ const categoryLabels: Record<string, string> = {
                 )
             }
 
-            <div class="content prose prose-lg max-w-none">
+            <div class="content prose prose-lg max-w-none overflow-hidden wrap-break-word">
                 <slot />
             </div>
         </div>
