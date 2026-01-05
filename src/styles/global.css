@@ -291,23 +291,3 @@ hr {
 .social-links a:hover {
   color: rgb(var(--gray-dark));
 }
-
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-  transition: all 0.2s ease;
-  font-weight: 500;
-}
-
-article a:not(.btn):not(.badge):hover,
-.prose a:not(.btn):not(.badge):hover,
-.content a:not(.btn):not(.badge):hover {
-  color: #d63d64;
-  text-decoration-thickness: 3px;
-  background-color: rgba(235, 80, 120, 0.1);
-  border-radius: 2px;
-  padding: 0 2px;
-  margin: 0 -2px;
-  font-size: 0.8em;
-    color: #f472b6;
-  }
-}
