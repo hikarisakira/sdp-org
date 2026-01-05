@@ -61,7 +61,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Light mode text colors - improved contrast */
+/* Light mode text colors - improved contrast - improved contrast */
 body {
   color: #0f172a;
 }
@@ -74,6 +74,7 @@ body {
   }
 >>>>>>> Stashed changes
 }
+
 
 body.menu-open {
     overflow: hidden;
@@ -100,6 +101,18 @@ main {
 }
 
 >>>>>>> Stashed changes
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 article {
     width: 720px;
     max-width: calc(100% - 2em);
@@ -118,7 +131,7 @@ h6 {
     line-height: 1.2;
 =======
   margin: 0 0 0.5rem 0;
-  color: #0f172a;
+  color: rgb(var(--black));
   line-height: 1.2;
 }
 
@@ -176,6 +189,7 @@ code {
     border-radius: 2px;
 =======
   padding: 2px 5px;
+  background-color: #e2e8f0;
   background-color: #e2e8f0;
   border-radius: 2px;
   color: #0f172a;

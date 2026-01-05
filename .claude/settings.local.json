@@ -13,7 +13,6 @@
       "Bash(python3:*)",
       "Bash(pkill:*)",
       "Bash(bun run dev)"
->>>>>>> Stashed changes
     ]
   },
   "outputStyle": "Explanatory"
