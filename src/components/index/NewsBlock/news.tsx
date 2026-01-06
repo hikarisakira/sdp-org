@@ -106,9 +106,9 @@ export default function LatestNews({ posts }: LatestNewsProps) {
                 : new Date(post.data.pubDate);
 
               return (
-                <article 
+                <article
                   key={post.id}
-                  className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow flex flex-col h-full"
+                  className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer group"
                 >
                   {/* 圖片區域 */}
                   {post.data.heroImage && (
@@ -116,7 +116,7 @@ export default function LatestNews({ posts }: LatestNewsProps) {
                       <img
                         src={post.data.heroImage}
                         alt={post.data.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </figure>
                   )}
@@ -154,22 +154,22 @@ export default function LatestNews({ posts }: LatestNewsProps) {
                         })}
                       </time>
                       
-                      <a 
+                      <a
                         href={`/news/${post.id}`}
-                        className="btn btn-sm btn-ghost gap-1"
+                        className="btn btn-sm btn-ghost gap-1 hover:gap-2 transition-all duration-200"
                       >
-                        閱讀更多 
-                        <svg 
-                          className="w-4 h-4" 
-                          fill="none" 
-                          viewBox="0 0 24 24" 
+                        閱讀更多
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
-                          <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth={2} 
-                            d="M13 7l5 5m0 0l-5 5m5-5H6" 
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
                           />
                         </svg>
                       </a>
@@ -216,9 +216,9 @@ export default function LatestNews({ posts }: LatestNewsProps) {
                   : new Date(post.data.pubDate);
 
                 return (
-                  <article 
+                  <article
                     key={post.id}
-                    className="card bg-base-100 shadow-xl"
+                    className="card bg-base-100 shadow-xl cursor-pointer group"
                   >
                     {/* 圖片區域 - 固定高度 */}
                     {post.data.heroImage && (
@@ -226,7 +226,7 @@ export default function LatestNews({ posts }: LatestNewsProps) {
                         <img
                           src={post.data.heroImage}
                           alt={post.data.title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </figure>
                     )}

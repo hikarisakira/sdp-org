@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @plugin 'daisyui';
 
+@theme {
+  --daisyui-themes: light, dark;
+}
+
 /*
   The CSS in this style tag is based off of Bear Blog's default CSS.
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
@@ -46,6 +50,20 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
 }
+
+/* Light mode text colors - improved contrast - improved contrast */
+body {
+  color: #0f172a;
+}
+
+/* Dark mode text colors */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: rgb(229, 233, 240);
+    background: #1a1a1a;
+  }
+}
+
 body.menu-open {
   overflow: hidden;
 }
@@ -116,6 +134,13 @@ pre {
   padding: 1.5em;
   border-radius: 8px;
 }
+
+@media (prefers-color-scheme: dark) {
+  pre {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
 pre > code {
   all: unset;
 }
@@ -129,6 +154,7 @@ hr {
   border: none;
   border-top: 1px solid rgb(var(--gray-light));
 }
+/* Mobile responsive styles */
 @media (max-width: 720px) {
   body {
     font-size: 18px;

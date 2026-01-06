@@ -7,18 +7,18 @@
       "delay": 5000,
       "slides": [
         {
-          "image": "/testing.jpg",
-          "title": "這邊是標題",
-          "subtitle": "這邊有一些最新消息的簡述,大概是這樣",
-          "showButton": true,
-          "buttonText": "採取行動",
-          "buttonLink": "/about",
+          "image": "/carousel/testing-1.png",
+          "title": "政治，是為了更好的生活。",
+          "subtitle": "社會民主黨，是一個強調「將生活帶入政治」的政黨。\n我們每時每刻，都為了我們的生活而奮鬥著。",
+          "showButton": false,
+          "buttonText": "",
+          "buttonLink": "",
           "textColor": "#ffffff"
         },
         {
           "image": "/testing-02.png",
-          "title": "第二張投影片",
-          "subtitle": "更多內容描述",
+          "title": "全新的社民黨，閃亮登場！",
+          "subtitle": "我們在這一年，針對官網、視覺做了大幅變動！\n新的一年，我們將持續深根在地，持續實現社會民主的生活形式！",
           "showButton": false,
           "textColor": "#ffffff"
         }

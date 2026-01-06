@@ -138,7 +138,7 @@
       </a>
 
       <a
-        href="https://line.me"
+        href="https://line.me/ti/g2/6ZFFCtfxOfjqlzruRQTfKCJ4FLrsTGqjQOQjVQ"
         class="btn btn-circle btn-ghost"
         aria-label="line"
         style="color: white;"

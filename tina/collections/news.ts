@@ -24,16 +24,19 @@ export const NewsCollection: Collection = {
       name: "description",
       label: "文章簡述",
       type: "string",
+      required: true,
     },
     {
       name: "pubDate",
       label: "發布日期",
       type: "datetime",
+      required: true,
     },
     {
       name: "heroImage",
       label: "標題圖片",
       type: "image",
+      required: true,
     },
     {
       type: "string",
