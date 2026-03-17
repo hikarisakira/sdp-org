@@ -21,6 +21,14 @@
           "subtitle": "我們在這一年，針對官網、視覺做了大幅變動！\n新的一年，我們將持續深根在地，持續實現社會民主的生活形式！",
           "showButton": false,
           "textColor": "#ffffff"
+        },
+        {
+          "image": "/GENERAL-example.png",
+          "title": "社民黨拒絕報復刪凍預算！",
+          "subtitle": "我們為政府單位的預算發聲，不僅是為了讓國家正常運作，更是為了讓百姓的便民服務不中斷。\n點擊下方連結查看更多...",
+          "showButton": true,
+          "buttonText": "查看文章",
+          "buttonLink": "https://example.com"
         }
       ],
       "_template": "heroCarousel"
