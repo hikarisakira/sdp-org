@@ -4,6 +4,7 @@ import config from "@/content/config/config.json";
 import BaseHead from "@/components/BaseHead.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import Analytics from "@vercel/analytics/astro";
 
 
 const { title, description, image, articleDate } = Astro.props;
@@ -29,6 +30,7 @@ const { title, description, image, articleDate } = Astro.props;
                 document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
             });
         </script>
+        <Analytics />
     </head>
     <body>
         <!-- Header outside of constrained main for full-width navbar -->

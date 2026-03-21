@@ -9,6 +9,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 import svelte from "@astrojs/svelte";
 
+import vercel from "@astrojs/vercel";
+
 // https://astro.build/config
 export default defineConfig({
   site: process.env.SITE_URL || `https://${process.env.VERCEL_URL}`,
@@ -44,4 +46,10 @@ export default defineConfig({
       destination: "/302",
     },
   },
+
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
 });
