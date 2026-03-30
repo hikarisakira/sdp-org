@@ -4,6 +4,8 @@
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import { siteConfig } from "@/site-config";
+import SpeedInsights from "@vercel/speed-insights/astro";
+
 
 export interface Props {
     title: string;
@@ -72,3 +74,4 @@ const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
 <meta property="twitter:image" content={socialImageURL} />
 
 <ClientRouter />
+<SpeedInsights />

@@ -151,3 +151,4 @@ deno.lock
 # FUCK OFF MACOS
 .DS_Store
 **/.DS_Store
+.vercel
