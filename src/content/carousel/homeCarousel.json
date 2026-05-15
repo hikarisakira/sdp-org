@@ -7,12 +7,12 @@
       "delay": 5000,
       "slides": [
         {
-          "image": "/carousel/testing-1.png",
-          "title": "政治，是為了更好的生活。",
-          "subtitle": "社會民主黨，是一個強調「將生活帶入政治」的政黨。\n我們每時每刻，都為了我們的生活而奮鬥著。",
-          "showButton": false,
-          "buttonText": "",
-          "buttonLink": "",
+          "image": "/Screenshot%202026-05-13%20at%2022-04-39%20%E6%8D%90%E6%AC%BE%E5%B9%B3%E5%8F%B0%E9%A6%96%E9%A0%81.png",
+          "title": "民主新苗．支持阿苗",
+          "subtitle": "社會民主黨台北市議員苗博雅，現已開放政治獻金捐款！\n捐款支持阿苗，永續民主新苗🙌",
+          "showButton": true,
+          "buttonText": "查看文章",
+          "buttonLink": "https://www.sdp.org.tw/news/miaopoya_donate",
           "textColor": "#ffffff"
         },
         {
