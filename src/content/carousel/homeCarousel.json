@@ -16,10 +16,12 @@
           "textColor": "#ffffff"
         },
         {
-          "image": "/testing-02.png",
-          "title": "全新的社民黨，閃亮登場！",
-          "subtitle": "我們在這一年，針對官網、視覺做了大幅變動！\n新的一年，我們將持續深根在地，持續實現社會民主的生活形式！",
-          "showButton": false,
+          "image": "/events/GENERAL.png",
+          "title": "在學校被性騷怎麼辦？讓前專員帶你走流程",
+          "subtitle": "遭遇到性騷擾等校園性平案件發生時，程序是冷冰冰的法規，還是保護被害人的防護網？\n歡迎來黨部，讓前專員來告訴你更多...",
+          "showButton": true,
+          "buttonText": "查看文章",
+          "buttonLink": "https://www.sdp.org.tw/news/2026_0521_event",
           "textColor": "#ffffff"
         },
         {
