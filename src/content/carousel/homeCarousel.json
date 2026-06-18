@@ -7,6 +7,14 @@
       "delay": 5000,
       "slides": [
         {
+          "image": "/posts/2026-0607/2026-0627-%E9%A1%8F%E8%89%B2%E6%93%B7%E5%8F%96%E6%A8%A3%E6%9C%AC%E6%94%BE%E6%98%A0%E6%9C%83-signal-2026-06-05-224443.jpeg",
+          "title": "顏色在政治中只是象徵嗎？還是隱藏著更複雜的光譜？",
+          "subtitle": "跟著《顏色擷取樣本.mov》導演陳卓斯、王紀堯一起探討，台灣的種種政治色彩學...",
+          "showButton": true,
+          "buttonText": "來看電影📽️",
+          "buttonLink": "https://www.sdp.org.tw/news/20260608-627-movie"
+        },
+        {
           "image": "/carousel/miao-carousel-01.png",
           "title": "民主新苗．支持阿苗",
           "subtitle": "社會民主黨台北市議員苗博雅，現已開放政治獻金捐款！\n捐款支持阿苗，永續民主新苗🙌",
@@ -16,12 +24,12 @@
           "textColor": "#ffffff"
         },
         {
-          "image": "/posts/2026-0607/2026-0627-%E9%A1%8F%E8%89%B2%E6%93%B7%E5%8F%96%E6%A8%A3%E6%9C%AC%E6%94%BE%E6%98%A0%E6%9C%83-signal-2026-06-05-224443.jpeg",
-          "title": "顏色在政治中只是象徵嗎？還是隱藏著更複雜的光譜？",
-          "subtitle": "跟著《顏色擷取樣本.mov》導演陳卓斯、王紀堯一起探討，台灣的種種政治色彩學...",
+          "image": "/posts/690812444_1384062527088955_6043925253313747421_n.jpg",
+          "title": "真和平‧要國防！",
+          "subtitle": "跟著社民黨，一同在523這一天走上街頭，支持國家的自主防衛！",
           "showButton": true,
-          "buttonText": "來看電影📽️",
-          "buttonLink": "https://www.sdp.org.tw/news/20260608-627-movie"
+          "buttonText": "點擊參加",
+          "buttonLink": "https://www.sdp.org.tw/news/20260523-peace"
         }
       ],
       "_template": "heroCarousel"
