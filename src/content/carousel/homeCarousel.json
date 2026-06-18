@@ -16,13 +16,12 @@
           "textColor": "#ffffff"
         },
         {
-          "image": "/events/260521-1b1.png",
-          "title": "在學校被性騷怎麼辦？讓前專員帶你走流程",
-          "subtitle": "遭遇到性騷擾等校園性平案件發生時，程序是冷冰冰的法規，還是保護被害人的防護網？\n歡迎來黨部，讓前專員來告訴你更多...",
+          "image": "/posts/2026-0607/2026-0627-%E9%A1%8F%E8%89%B2%E6%93%B7%E5%8F%96%E6%A8%A3%E6%9C%AC%E6%94%BE%E6%98%A0%E6%9C%83-signal-2026-06-05-224443.jpeg",
+          "title": "顏色在政治中只是象徵嗎？還是隱藏著更複雜的光譜？",
+          "subtitle": "跟著《顏色擷取樣本.mov》導演陳卓斯、王紀堯一起探討，台灣的種種政治色彩學...",
           "showButton": true,
-          "buttonText": "查看文章",
-          "buttonLink": "https://www.sdp.org.tw/news/2026_0521_event",
-          "textColor": "#ffffff"
+          "buttonText": "來看電影📽️",
+          "buttonLink": "https://www.sdp.org.tw/news/20260608-627-movie"
         }
       ],
       "_template": "heroCarousel"
